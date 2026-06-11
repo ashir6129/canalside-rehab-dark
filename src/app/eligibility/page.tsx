@@ -1,5 +1,6 @@
-import { CheckCircle, AlertCircle, Calendar, UserCheck } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+import { CheckCircle2, AlertCircle, Calendar, UserCheck, ArrowRight } from "lucide-react";
 
 const criteria = [
   "Service is available to adults aged 18 and over.",
@@ -7,86 +8,98 @@ const criteria = [
   "GP intervention and/or maintained sobriety for a minimum of 6 weeks.",
   "Care is tailored for clients with co-occurring mental health needs.",
   "Must demonstrate readiness to engage actively in treatment and recovery activities.",
-  "Commitment to long-term abstinence and personal development."
+  "Commitment to long-term abstinence and personal development.",
+];
+
+const expectations = [
+  { icon: UserCheck, title: "Personal Accountability", desc: "Managing your own schedule and maintaining the rules of the house.", accent: "#C9A84C" },
+  { icon: Calendar, title: "Active Participation", desc: "Engagement in all therapeutic sessions, group work, and workshops.", accent: "#4A9B8E" },
 ];
 
 const EligibilityPage = () => {
   return (
-    <main className="pt-24 bg-white">
-      {/* Header */}
-      <section className="bg-[var(--primary)] py-20 text-white">
-        <div className="container mx-auto px-6 text-center">
-          <h1 className="text-5xl font-serif mb-6">Admission Criteria</h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Clear guidelines to help you determine if Canalside is the right next step for your recovery.
+    <main style={{ backgroundColor: "#111111" }} className="pt-20 min-h-screen">
+
+      {/* Hero */}
+      <section className="relative py-28 overflow-hidden" style={{ backgroundColor: "#0D0D0D" }}>
+        <div className="absolute inset-0">
+          <Image src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1600&q=80" alt="Eligibility" fill className="object-cover opacity-15" priority />
+          <div className="absolute inset-0" style={{ backgroundColor: "#0D0D0D", opacity: 0.72 }} />
+        </div>
+        <div className="relative max-w-4xl mx-auto px-6 text-center">
+          <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "#4A9B8E" }}>Admissions</p>
+          <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{ fontFamily: "var(--font-playfair), serif", color: "#F0F0F0" }}>Admission Criteria</h1>
+          <p className="text-lg max-w-2xl mx-auto" style={{ color: "#888888" }}>
+            Clear guidelines to help you determine if Canalside is the right next step for your recovery journey.
           </p>
         </div>
       </section>
 
-      {/* Main Criteria Section */}
-      <section className="py-24">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-serif text-[var(--primary)] mb-12 text-center">Is This Right for You?</h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {criteria.map((item, index) => (
-                <div key={index} className="flex gap-4 p-6 bg-gray-50 rounded-2xl border border-gray-100">
-                  <CheckCircle className="text-[var(--accent)] shrink-0" size={24} />
-                  <p className="text-gray-700 font-medium">{item}</p>
-                </div>
-              ))}
-            </div>
+      {/* Criteria Grid */}
+      <section className="py-24" style={{ backgroundColor: "#111111" }}>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "#C9A84C" }}>Requirements</p>
+            <h2 className="text-3xl md:text-4xl font-bold" style={{ fontFamily: "var(--font-playfair), serif", color: "#F0F0F0" }}>Is This Right for You?</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto">
+            {criteria.map((item, index) => (
+              <div key={index} className="flex gap-4 p-5 rounded-xl transition-all duration-300"
+                style={{ backgroundColor: "#1C1C1C", border: "1px solid #2C2C2C" }}>
+                <span className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5"
+                  style={{ backgroundColor: index % 2 === 0 ? "#C9A84C" : "#4A9B8E" }}>
+                  <CheckCircle2 size={13} style={{ color: "#0D0D0D" }} />
+                </span>
+                <p className="text-sm leading-relaxed" style={{ color: "#CCCCCC" }}>{item}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Expectations Section */}
-      <section className="py-24 bg-[#f4f7f6]">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="order-2 lg:order-1">
-              <img
-                src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                alt="Commitment"
-                className="rounded-3xl shadow-lg"
-              />
+      {/* What We Expect */}
+      <section className="py-24" style={{ backgroundColor: "#161616" }}>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col lg:flex-row gap-16 items-center">
+            <div className="lg:w-1/2 relative h-80 w-full rounded-2xl overflow-hidden" style={{ border: "1px solid #2C2C2C" }}>
+              <Image src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1000&q=80" alt="Commitment" fill className="object-cover" sizes="50vw" />
+              <div className="absolute inset-0" style={{ backgroundColor: "#111111", opacity: 0.25 }} />
             </div>
-            <div className="order-1 lg:order-2">
-              <h2 className="text-4xl font-serif text-[var(--primary)] mb-8">What We Expect</h2>
-              <p className="text-lg text-gray-600 mb-8">
+            <div className="lg:w-1/2">
+              <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "#C9A84C" }}>Expectations</p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-5" style={{ fontFamily: "var(--font-playfair), serif", color: "#F0F0F0" }}>What We Expect</h2>
+              <p className="text-sm leading-relaxed mb-8" style={{ color: "#888888" }}>
                 Secondary care requires a higher level of personal responsibility than primary treatment. We expect our residents to be proactive participants in their own healing.
               </p>
-
-              <div className="space-y-6">
-                <div className="flex gap-4">
-                  <div className="bg-white p-3 rounded-full shadow-sm h-fit text-[var(--accent)]"><UserCheck size={24} /></div>
-                  <div>
-                    <h4 className="font-bold text-[var(--primary)]">Personal Accountability</h4>
-                    <p className="text-gray-600">Managing your own schedule and maintaining the rules of the house.</p>
+              <div className="space-y-4">
+                {expectations.map(({ icon: Icon, title, desc, accent }, i) => (
+                  <div key={i} className="flex gap-4 p-5 rounded-xl" style={{ backgroundColor: "#1C1C1C", border: "1px solid #2C2C2C" }}>
+                    <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: accent }}>
+                      <Icon size={18} style={{ color: "#0D0D0D" }} />
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold mb-1" style={{ color: "#F0F0F0" }}>{title}</h4>
+                      <p className="text-xs" style={{ color: "#777777" }}>{desc}</p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="bg-white p-3 rounded-full shadow-sm h-fit text-[var(--accent)]"><Calendar size={24} /></div>
-                  <div>
-                    <h4 className="font-bold text-[var(--primary)]">Participation</h4>
-                    <p className="text-gray-600">Active engagement in all therapeutic sessions and workshops.</p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Exclusion Note */}
-      <section className="py-24">
-        <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto bg-amber-50 border border-amber-100 p-10 rounded-[2rem] flex flex-col md:flex-row gap-8 items-center">
-            <div className="p-5 bg-amber-100 rounded-full text-amber-600"><AlertCircle size={40} /></div>
+      {/* Please Note warning */}
+      <section className="py-16" style={{ backgroundColor: "#111111" }}>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="max-w-3xl mx-auto flex gap-6 p-7 rounded-2xl items-start"
+            style={{ backgroundColor: "#1A0E00", border: "1px solid #5C3A00" }}>
+            <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: "#C9A84C" }}>
+              <AlertCircle size={20} style={{ color: "#0D0D0D" }} />
+            </div>
             <div>
-              <h3 className="text-2xl font-serif font-bold text-amber-900 mb-2">Please Note</h3>
-              <p className="text-amber-800">
+              <h3 className="text-base font-bold mb-2" style={{ color: "#C9A84C" }}>Please Note</h3>
+              <p className="text-sm leading-relaxed" style={{ color: "#AA8844" }}>
                 Canalside is a secondary care facility, not a medical detox center. If you currently require intensive clinical supervision or 24/7 medical monitoring, secondary care may not yet be appropriate.
               </p>
             </div>
@@ -94,16 +107,19 @@ const EligibilityPage = () => {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-24 text-center">
-        <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-serif mb-8 text-[var(--primary)]">Not sure if you qualify?</h2>
+      {/* CTA */}
+      <section className="py-24" style={{ backgroundColor: "#161616" }}>
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "#4A9B8E" }}>Next Steps</p>
+          <h2 className="text-3xl font-bold mb-10" style={{ fontFamily: "var(--font-playfair), serif", color: "#F0F0F0" }}>Not Sure If You Qualify?</h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="btn-primary inline-block px-12">
-              Speak to our Admissions Team
+            <Link href="/contact" className="inline-flex items-center gap-2 font-bold px-10 py-4 rounded-md text-sm"
+              style={{ backgroundColor: "#C9A84C", color: "#0D0D0D" }}>
+              Speak to Our Admissions Team <ArrowRight size={16} />
             </Link>
-            <Link href="/referral" className="glass text-[var(--primary)] border border-[var(--primary)]/20 px-12 py-4 rounded-full font-bold hover:bg-gray-50 transition-all">
-              Professional Referral Info
+            <Link href="/referral" className="inline-flex items-center gap-2 font-medium px-10 py-4 rounded-md text-sm"
+              style={{ border: "1px solid #2C2C2C", color: "#888888" }}>
+              Professional Referral Info <ArrowRight size={16} />
             </Link>
           </div>
         </div>
