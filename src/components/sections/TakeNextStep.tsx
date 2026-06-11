@@ -1,53 +1,145 @@
-import React from 'react';
-import Link from 'next/link';
-import { ArrowRight, Phone, MapPin } from 'lucide-react';
+"use client";
+import Link from "next/link";
+import Image from "next/image";
+import { Phone, MapPin, ArrowRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+
+const steps = [
+  {
+    icon: Phone,
+    title: "Get Professional Advice",
+    description: "Contact us today for a confidential conversation about your recovery journey. Our team is available to answer all your questions with compassion and expertise.",
+    cta: "Contact Us Now",
+    href: "/contact",
+    accent: "#C9A84C",
+    image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    icon: MapPin,
+    title: "Visit & Learn More",
+    description: "Schedule a visit or explore our programme and therapeutic community to see if Canalside House is the right fit for you or your loved one.",
+    cta: "Explore Our Programme",
+    href: "/programme",
+    accent: "#4A9B8E",
+    image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=600&q=80",
+  },
+];
 
 const TakeNextStep = () => {
-    return (
-        <section className="py-24 bg-[var(--primary)] text-white text-center relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-full opacity-10">
-                <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[var(--accent)] to-transparent"></div>
-            </div>
-            <div className="container mx-auto px-6 relative z-10">
-                <h2 className="text-4xl md:text-5xl font-serif mb-8">Take the Next Step</h2>
-                <div className="max-w-3xl mx-auto space-y-6 mb-12 text-lg text-gray-300 leading-relaxed">
-                    <p>
-                        You’ve already done the hard part—now let’s build on that foundation. If you or a loved one are ready to explore secondary treatment, we're here to help.
-                    </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
-                    <div className="bg-white/5 backdrop-blur-sm p-8 rounded-[2.5rem] border border-white/10 hover:bg-white/10 transition-all text-left">
-                        <div className="bg-[var(--accent)] p-3 rounded-2xl w-fit mb-6">
-                            <Phone className="text-[var(--primary)]" size={24} />
-                        </div>
-                        <h3 className="text-xl font-bold mb-3">Professional Advice</h3>
-                        <p className="text-gray-400 mb-6">Contact Us Today for a confidential conversation about your recovery journey.</p>
-                        <Link href="/contact" className="text-[var(--accent)] font-bold flex items-center gap-2 hover:gap-4 transition-all">
-                            Contact Us Now <ArrowRight size={20} />
-                        </Link>
-                    </div>
-
-                    <div className="bg-white/5 backdrop-blur-sm p-8 rounded-[2.5rem] border border-white/10 hover:bg-white/10 transition-all text-left">
-                        <div className="bg-white p-3 rounded-2xl w-fit mb-6">
-                            <MapPin className="text-[var(--primary)]" size={24} />
-                        </div>
-                        <h3 className="text-xl font-bold mb-3">Visit & Learn</h3>
-                        <p className="text-gray-400 mb-6">Schedule a Visit or learn more about our programme and therapeutic community.</p>
-                        <Link href="/programme" className="text-white font-bold flex items-center gap-2 hover:gap-4 transition-all underline decoration-[var(--accent)] underline-offset-8">
-                            Explore Our Programme <ArrowRight size={20} />
-                        </Link>
-                    </div>
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Link href="/contact" className="btn-primary px-12 py-5 text-lg shadow-2xl">
-                        Enquire Now
-                    </Link>
-                </div>
-            </div>
-        </section>
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) setVisible(true); },
+      { threshold: 0.08 }
     );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section className="py-24" style={{ backgroundColor: "#0D0D0D" }}>
+      <div className="max-w-7xl mx-auto px-6">
+
+        {/* Heading */}
+        <div className="text-center mb-14">
+          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "#4A9B8E" }}>
+            Begin Your Recovery
+          </p>
+          <h2 className="text-3xl md:text-5xl font-bold mb-5 leading-tight"
+            style={{ fontFamily: "var(--font-playfair), serif", color: "#F0F0F0" }}>
+            Take the Next Step
+          </h2>
+          <p className="text-sm max-w-xl mx-auto leading-relaxed" style={{ color: "#888888" }}>
+            You&apos;ve already done the hard part — now let&apos;s build on that foundation. We&apos;re here to help you every step of the way.
+          </p>
+        </div>
+
+        {/* Cards */}
+        <div
+          ref={ref}
+          className={`grid grid-cols-1 md:grid-cols-2 gap-7 max-w-4xl mx-auto mb-12 transition-all duration-700 ${
+            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          {steps.map((step) => {
+            const Icon = step.icon;
+            return (
+              <div
+                key={step.title}
+                className="rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1"
+                style={{ backgroundColor: "#1C1C1C", border: "1px solid #2C2C2C" }}
+                onMouseEnter={e => (e.currentTarget.style.borderColor = step.accent)}
+                onMouseLeave={e => (e.currentTarget.style.borderColor = "#2C2C2C")}
+              >
+                {/* Card image */}
+                <div className="relative h-44 overflow-hidden shrink-0">
+                  <Image
+                    src={step.image}
+                    alt={step.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0" style={{ backgroundColor: "#0D0D0D", opacity: 0.55 }} />
+                  {/* Icon over image */}
+                  <div className="absolute bottom-4 left-4 w-10 h-10 rounded-xl flex items-center justify-center"
+                    style={{ backgroundColor: step.accent }}>
+                    <Icon size={18} style={{ color: "#0D0D0D" }} />
+                  </div>
+                </div>
+
+                {/* Body */}
+                <div className="p-7 flex flex-col flex-1">
+                  <div className="w-8 h-0.5 mb-4 rounded-full" style={{ backgroundColor: step.accent }} />
+                  <h3 className="text-lg font-bold mb-3"
+                    style={{ fontFamily: "var(--font-playfair), serif", color: "#F0F0F0" }}>
+                    {step.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed mb-6 flex-1" style={{ color: "#888888" }}>
+                    {step.description}
+                  </p>
+                  <Link href={step.href}
+                    className="inline-flex items-center gap-2 font-bold px-5 py-2.5 rounded-md text-sm transition-all duration-300 w-fit"
+                    style={{ backgroundColor: step.accent, color: "#0D0D0D" }}
+                    onMouseEnter={e => (e.currentTarget.style.opacity = "0.85")}
+                    onMouseLeave={e => (e.currentTarget.style.opacity = "1")}>
+                    {step.cta} <ArrowRight size={14} />
+                  </Link>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Full-width CTA strip */}
+        <div className="relative rounded-2xl overflow-hidden" style={{ border: "1px solid #2C2C2C" }}>
+          <div className="absolute inset-0">
+            <Image
+              src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=80"
+              alt="Recovery path"
+              fill
+              className="object-cover"
+              sizes="100vw"
+            />
+            <div className="absolute inset-0" style={{ backgroundColor: "#0D0D0D", opacity: 0.8 }} />
+          </div>
+          <div className="relative z-10 py-14 px-8 text-center">
+            <p className="text-lg mb-6 max-w-lg mx-auto" style={{ color: "#888888" }}>
+              Ready to start? Our team responds within 24 hours — confidentially and compassionately.
+            </p>
+            <Link href="/contact"
+              className="inline-flex items-center gap-2 font-bold px-10 py-4 rounded-md text-base transition-all duration-300"
+              style={{ backgroundColor: "#C9A84C", color: "#0D0D0D" }}
+              onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#4A9B8E")}
+              onMouseLeave={e => (e.currentTarget.style.backgroundColor = "#C9A84C")}>
+              Enquire Now <ArrowRight size={18} />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default TakeNextStep;

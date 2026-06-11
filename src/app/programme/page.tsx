@@ -1,255 +1,358 @@
 import Link from "next/link";
-import { CheckCircle2, ArrowRightLeft, Users, Activity, Sparkles, Brain, Shield, Heart, GraduationCap, Clock, Home, Users2 } from "lucide-react";
+import Image from "next/image";
+import {
+  CheckCircle2, ArrowRightLeft, Users, Activity, Sparkles,
+  Brain, Shield, Heart, GraduationCap, Clock, Home, Users2, ArrowRight
+} from "lucide-react";
 
 const benefits = [
-    {
-        title: "Smooth Transition to Independent Living",
-        description: "Secondary treatment provides a bridge between intensive inpatient care and full independence. It helps individuals gradually reintegrate into daily life while still receiving therapeutic support.",
-        icon: <ArrowRightLeft className="text-[var(--accent)]" size={32} />
-    },
-    {
-        title: "Ongoing Therapy and Support",
-        description: "Continued access to individual therapy, group counseling, and peer support allows clients to work through deeper emotional issues and triggers that may not have been fully addressed in primary treatment.",
-        icon: <Heart className="text-[var(--accent)]" size={32} />
-    },
-    {
-        title: "Relapse Prevention",
-        description: "Clients learn advanced coping skills and relapse prevention strategies, helping them recognise early warning signs and respond to challenges without returning to substance use.",
-        icon: <Shield className="text-[var(--accent)]" size={32} />
-    },
-    {
-        title: "Structured Routine",
-        description: "Secondary programs offer structure and accountability—essential elements for maintaining sobriety. Daily schedules may include therapy, life skills classes, 12-step meetings, and recreational activities.",
-        icon: <Clock className="text-[var(--accent)]" size={32} />
-    },
-    {
-        title: "Supportive Environment",
-        description: "Being in a sober, supportive community helps reduce the isolation often felt during early recovery. Clients build strong relationships with others who share similar goals and experiences.",
-        icon: <Home className="text-[var(--accent)]" size={32} />
-    },
-    {
-        title: "Focus on Life Skills and Personal Growth",
-        description: "Secondary treatment often includes education and vocational support, budgeting, healthy living habits, and communication skills—tools essential for long-term success and self-sufficiency.",
-        icon: <GraduationCap className="text-[var(--accent)]" size={32} />
-    },
-    {
-        title: "Family Involvement",
-        description: "Many programs incorporate family therapy or education, helping loved ones understand the recovery process and rebuild trust and communication.",
-        icon: <Users2 className="text-[var(--accent)]" size={32} />
-    }
+  { title: "Smooth Transition to Independent Living", description: "Secondary treatment provides a bridge between intensive inpatient care and full independence, helping clients reintegrate into daily life with continued support.", icon: ArrowRightLeft, accent: "#C9A84C", image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=600&q=80" },
+  { title: "Ongoing Therapy and Support", description: "Continued access to individual therapy, group counseling, and peer support allows clients to work through deeper emotional issues and triggers.", icon: Heart, accent: "#4A9B8E", image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80" },
+  { title: "Relapse Prevention", description: "Clients learn advanced coping skills and relapse prevention strategies, helping them recognise early warning signs without returning to substance use.", icon: Shield, accent: "#C9A84C", image: "https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&w=600&q=80" },
+  { title: "Structured Routine", description: "Secondary programs offer structure and accountability—therapy, life skills classes, 12-step meetings, and recreational activities keeping recovery on track.", icon: Clock, accent: "#4A9B8E", image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" },
+  { title: "Supportive Environment", description: "Being in a sober, supportive community helps reduce the isolation often felt during early recovery. Clients build strong relationships with others who share similar goals.", icon: Home, accent: "#C9A84C", image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=600&q=80" },
+  { title: "Life Skills & Personal Growth", description: "Education on budgeting, healthy living habits, and communication skills — essential tools for long-term success and self-sufficiency after recovery.", icon: GraduationCap, accent: "#4A9B8E", image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80" },
+  { title: "Family Involvement", description: "Many programs incorporate family therapy or education, helping loved ones understand the recovery process and rebuild trust and communication.", icon: Users2, accent: "#C9A84C", image: "https://images.unsplash.com/photo-1609220136736-443140cffec6?auto=format&fit=crop&w=600&q=80" },
 ];
 
 const focusAreas = [
-    {
-        title: "Clinical Excellence",
-        description: "Weekly group therapy and individual care planning focused on emotional regulation and underlying trauma.",
-        icon: <Brain className="text-[var(--accent)]" size={32} />
-    },
-    {
-        title: "Relapse Prevention",
-        description: "Intensive training on identifying personal triggers, managing cravings, and building robust coping strategies.",
-        icon: <Shield className="text-[var(--accent)]" size={32} />
-    },
-    {
-        title: "12-Step Consolidation",
-        description: "Deepening connection to mutual aid groups and establishing a permanent sober support network.",
-        icon: <Users className="text-[var(--accent)]" size={32} />
-    },
-    {
-        title: "Life Skills & Autonomy",
-        description: "Practical development in budgeting, meal planning, and taking full responsibility for one's personal life.",
-        icon: <Sparkles className="text-[var(--accent)]" size={32} />
-    },
-    {
-        title: "Healthy Routine",
-        description: "Building a structured daily routine that balances therapeutic work with personal freedom and resilience.",
-        icon: <Activity className="text-[var(--accent)]" size={32} />
-    }
+  "Building Self-Confidence",
+  "Repairing and Maintaining Relationships",
+  "Strategies for Managing Stress",
+  "Relapse Prevention",
+  "12 Step Programme Consolidation",
+  "Weekly Group Therapy",
+  "Individual Care Planning",
+  "Recognising Triggers and How to Manage Them",
+  "Structured Daily Routine",
+  "Building a Support Network",
+  "How to Manage Cravings if They Occur",
+  "Developing Skills in Budget and Meal Planning",
+  "How to Take Responsibility in Personal Life",
 ];
 
 const ProgrammePage = () => {
-    return (
-        <main className="pt-24">
-            {/* Hero Header */}
-            <section className="bg-[var(--primary)] py-20 text-white">
-                <div className="container mx-auto px-6 text-center">
-                    <h1 className="text-5xl font-serif mb-6">Our Programme</h1>
-                    <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                        Bridging the gap between initial rehabilitation and a full, independent life.
-                    </p>
+  return (
+    <main style={{ backgroundColor: "#111111" }} className="pt-20">
+
+      {/* Hero Header */}
+      <section className="relative py-28 overflow-hidden" style={{ backgroundColor: "#0D0D0D" }}>
+        <div className="absolute inset-0">
+          <Image
+            src="https://images.unsplash.com/photo-1464082354059-27db6ce50048?auto=format&fit=crop&w=1600&q=80"
+            alt="Programme background"
+            fill
+            className="object-cover opacity-20"
+            priority
+          />
+          <div className="absolute inset-0" style={{ backgroundColor: "#0D0D0D", opacity: 0.7 }} />
+        </div>
+        <div className="relative max-w-4xl mx-auto px-6 text-center">
+          <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "#4A9B8E" }}>
+            Secondary Care
+          </p>
+          <h1
+            className="text-5xl md:text-6xl font-bold mb-6 leading-tight"
+            style={{ fontFamily: "var(--font-playfair), serif", color: "#F0F0F0" }}
+          >
+            Our Programme
+          </h1>
+          <p className="text-lg max-w-2xl mx-auto mb-10" style={{ color: "#888888" }}>
+            Bridging the gap between initial rehabilitation and a full, independent life — with structure, community, and expert clinical care.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/referral/apply"
+              className="inline-flex items-center gap-2 font-bold px-8 py-3.5 rounded-md text-sm transition-colors duration-300"
+              style={{ backgroundColor: "#C9A84C", color: "#0D0D0D" }}
+            >
+              Apply Now <ArrowRight size={16} />
+            </Link>
+            <Link
+              href="/referral"
+              className="inline-flex items-center gap-2 font-medium px-8 py-3.5 rounded-md text-sm transition-colors duration-300"
+              style={{ border: "1px solid #2C2C2C", color: "#888888" }}
+            >
+              For Professionals <ArrowRight size={16} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Comparison Section */}
+      <section className="py-24" style={{ backgroundColor: "#161616" }}>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "#C9A84C" }}>
+              Understanding Care
+            </p>
+            <h2
+              className="text-3xl md:text-4xl font-bold"
+              style={{ fontFamily: "var(--font-playfair), serif", color: "#F0F0F0" }}
+            >
+              Secondary Care vs Primary Care
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Primary */}
+            <div className="p-8 rounded-2xl" style={{ backgroundColor: "#1C1C1C", border: "1px solid #2C2C2C" }}>
+              <h3 className="text-xl font-bold mb-6" style={{ color: "#555555", fontFamily: "var(--font-playfair), serif" }}>
+                Primary Care
+              </h3>
+              <p className="text-xs uppercase tracking-widest mb-4" style={{ color: "#555555" }}>The Foundation</p>
+              <ul className="space-y-4">
+                {["Clinical detoxification and stabilization.", "24/7 high-intensity clinical supervision.", "Short-term intervention (typically 28 days)."].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <CheckCircle2 size={18} style={{ color: "#444444" }} className="shrink-0 mt-0.5" />
+                    <span className="text-sm" style={{ color: "#555555" }}>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Secondary (Canalside) */}
+            <div className="p-8 rounded-2xl relative overflow-hidden" style={{ backgroundColor: "#1C1C1C", border: "2px solid #C9A84C" }}>
+              <div
+                className="absolute top-0 right-0 text-xs font-bold uppercase px-4 py-1.5"
+                style={{ backgroundColor: "#C9A84C", color: "#0D0D0D" }}
+              >
+                Canalside Recovery
+              </div>
+              <h3 className="text-xl font-bold mb-2 mt-4" style={{ color: "#F0F0F0", fontFamily: "var(--font-playfair), serif" }}>
+                Secondary Care
+              </h3>
+              <p className="text-xs uppercase tracking-widest mb-6" style={{ color: "#C9A84C" }}>Sustainable Living</p>
+              <ul className="space-y-4">
+                {["Semi-independent therapeutic living.", "Focus on community integration and employment.", "Extended support for lasting abstinence."].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <CheckCircle2 size={18} style={{ color: "#C9A84C" }} className="shrink-0 mt-0.5" />
+                    <span className="text-sm font-medium" style={{ color: "#CCCCCC" }}>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-24" style={{ backgroundColor: "#111111" }}>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "#4A9B8E" }}>
+              Why It Works
+            </p>
+            <h2
+              className="text-3xl md:text-4xl font-bold mb-4"
+              style={{ fontFamily: "var(--font-playfair), serif", color: "#F0F0F0" }}
+            >
+              Benefits of Secondary Treatment
+            </h2>
+            <p className="text-sm max-w-2xl mx-auto" style={{ color: "#888888" }}>
+              After completing detox or residential rehab, many individuals benefit from continued support to solidify their progress.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {benefits.map((benefit, index) => {
+              const Icon = benefit.icon;
+              return (
+                <div
+                  key={index}
+                  className="rounded-2xl overflow-hidden group transition-all duration-300 hover:-translate-y-1"
+                  style={{ backgroundColor: "#1C1C1C", border: "1px solid #2C2C2C" }}
+                >
+                  {/* Image */}
+                  <div className="relative h-36 overflow-hidden">
+                    <Image
+                      src={benefit.image}
+                      alt={benefit.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, 25vw"
+                    />
+                    <div className="absolute inset-0" style={{ backgroundColor: "#111111", opacity: 0.5 }} />
+                    <div
+                      className="absolute top-3 left-3 w-8 h-8 rounded-lg flex items-center justify-center"
+                      style={{ backgroundColor: benefit.accent }}
+                    >
+                      <Icon size={15} style={{ color: "#0D0D0D" }} />
+                    </div>
+                  </div>
+                  <div className="p-5">
+                    <div className="w-6 h-0.5 rounded-full mb-3" style={{ backgroundColor: benefit.accent }} />
+                    <h3 className="text-sm font-bold mb-2" style={{ color: "#F0F0F0" }}>{benefit.title}</h3>
+                    <p className="text-xs leading-relaxed" style={{ color: "#777777" }}>{benefit.description}</p>
+                  </div>
                 </div>
-            </section>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
-            {/* Comparison Section */}
-            <section className="py-24 bg-white">
-                <div className="container mx-auto px-6">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl font-serif text-[var(--primary)] mb-4">Secondary Care vs Primary Care</h2>
-                        <p className="text-gray-600">Understanding where we fit in your recovery journey.</p>
-                    </div>
+      {/* Focus Areas */}
+      <section className="py-24" style={{ backgroundColor: "#161616" }}>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "#C9A84C" }}>
+              Programme Structure
+            </p>
+            <h2
+              className="text-3xl md:text-4xl font-bold mb-4"
+              style={{ fontFamily: "var(--font-playfair), serif", color: "#F0F0F0" }}
+            >
+              Key Areas of Our Secondary Care Programme
+            </h2>
+            <p className="text-sm max-w-xl mx-auto" style={{ color: "#888888" }}>
+              Our structured approach ensures every aspect of recovery is addressed with clinical excellence and personal care.
+            </p>
+          </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-                        {/* Primary Care */}
-                        <div className="p-10 bg-gray-50 rounded-3xl border border-gray-100">
-                            <h3 className="text-2xl font-bold mb-6 text-gray-400">Primary Care (The Foundation)</h3>
-                            <ul className="space-y-4">
-                                <li className="flex items-start gap-3 text-gray-500">
-                                    <CheckCircle2 size={24} className="shrink-0" />
-                                    <span>Clinical detoxification and stabilization.</span>
-                                </li>
-                                <li className="flex items-start gap-3 text-gray-500">
-                                    <CheckCircle2 size={24} className="shrink-0" />
-                                    <span>24/7 high-intensity clinical supervision.</span>
-                                </li>
-                                <li className="flex items-start gap-3 text-gray-500">
-                                    <CheckCircle2 size={24} className="shrink-0" />
-                                    <span>Short-term intervention (typically 28 days).</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        {/* Secondary Care (Canalside) */}
-                        <div className="p-10 bg-white rounded-3xl border-2 border-[var(--primary)] shadow-xl relative overflow-hidden">
-                            <div className="absolute top-0 right-0 bg-[var(--accent)] text-[var(--primary)] px-4 py-1 font-bold text-xs uppercase">Canalside Recovery</div>
-                            <h3 className="text-2xl font-bold mb-6 text-[var(--primary)]">Secondary Care (Sustainable Living)</h3>
-                            <ul className="space-y-4">
-                                <li className="flex items-start gap-3 text-gray-700 font-medium">
-                                    <CheckCircle2 size={24} className="text-[var(--accent)] shrink-0" />
-                                    <span>Semi-independent therapeutic living.</span>
-                                </li>
-                                <li className="flex items-start gap-3 text-gray-700 font-medium">
-                                    <CheckCircle2 size={24} className="text-[var(--accent)] shrink-0" />
-                                    <span>Focus on community integration and employment.</span>
-                                </li>
-                                <li className="flex items-start gap-3 text-gray-700 font-medium">
-                                    <CheckCircle2 size={24} className="text-[var(--accent)] shrink-0" />
-                                    <span>Extended support for lasting abstinence.</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+            {focusAreas.map((area, index) => (
+              <div
+                key={index}
+                className="flex items-center gap-4 p-4 rounded-xl transition-all duration-300"
+                style={{ backgroundColor: "#1C1C1C", border: "1px solid #2C2C2C" }}
+              >
+                <div
+                  className="w-9 h-9 rounded-lg flex items-center justify-center text-sm font-bold shrink-0"
+                  style={{ backgroundColor: index % 2 === 0 ? "#C9A84C" : "#4A9B8E", color: "#0D0D0D" }}
+                >
+                  {index + 1}
                 </div>
-            </section>
+                <span className="text-sm font-medium" style={{ color: "#CCCCCC" }}>{area}</span>
+              </div>
+            ))}
+          </div>
 
-            {/* Benefits Section */}
-            <section className="py-24 bg-[#f4f7f6]">
-                <div className="container mx-auto px-6">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl font-serif text-[var(--primary)] mb-6">Benefits of Secondary Treatment for Drug and Alcohol Recovery</h2>
-                        <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                            Secondary treatment, also known as extended or step-down care, plays a crucial role in long-term addiction recovery. After completing detox or residential rehab, many individuals benefit from continued support to solidify the progress they’ve made. Here are the key benefits of secondary treatment:
-                        </p>
-                    </div>
+          {/* Quote block */}
+          <div className="mt-20 max-w-3xl mx-auto text-center p-10 rounded-2xl" style={{ backgroundColor: "#1C1C1C", border: "1px solid #C9A84C" }}>
+            <p className="text-xs font-semibold uppercase tracking-widest mb-6" style={{ color: "#C9A84C" }}>From Our Team</p>
+            <p
+              className="text-lg italic leading-relaxed mb-6"
+              style={{ fontFamily: "var(--font-playfair), serif", color: "#DDDDDD" }}
+            >
+              &ldquo;The structure of the programme incorporates a balance of freedom and timetabled events and enables the confidence and resilience to build on recovery gains.&rdquo;
+            </p>
+            <p className="text-xs" style={{ color: "#666666" }}>— Canalside Residential Team</p>
+          </div>
+        </div>
+      </section>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                        {benefits.map((benefit, index) => (
-                            <div key={index} className="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300">
-                                <div className="mb-6 p-4 bg-gray-50 rounded-2xl w-fit">
-                                    {benefit.icon}
-                                </div>
-                                <h3 className="text-xl font-bold text-[var(--primary)] mb-3">{benefit.title}</h3>
-                                <p className="text-gray-600 leading-relaxed font-medium">{benefit.description}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+      {/* Who Is It For */}
+      <section className="py-24" style={{ backgroundColor: "#111111" }}>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col lg:flex-row gap-16 items-center">
+            <div className="lg:w-1/2">
+              <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "#4A9B8E" }}>
+                Eligibility
+              </p>
+              <h2
+                className="text-3xl md:text-4xl font-bold mb-6"
+                style={{ fontFamily: "var(--font-playfair), serif", color: "#F0F0F0" }}
+              >
+                Who Is It For?
+              </h2>
+              <p className="text-sm leading-relaxed mb-8" style={{ color: "#888888" }}>
+                Available to adults aged 18 and over who have completed a recognised primary treatment programme, have had GP intervention and/or maintained sobriety for a minimum of 6 weeks.
+              </p>
+              <div className="space-y-3 mb-8">
+                {[
+                  "Clients may present with co-occurring mental health needs — care tailored accordingly.",
+                  "Clients must demonstrate readiness to engage actively in recovery activities.",
+                  "We work with Change Grow Live, Turning Point, With You, NHS Teams, and more."
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    className="flex items-start gap-3 p-4 rounded-xl"
+                    style={{ backgroundColor: "#1C1C1C", border: "1px solid #2C2C2C" }}
+                  >
+                    <span
+                      className="shrink-0 w-5 h-5 rounded-full flex items-center justify-center mt-0.5"
+                      style={{ backgroundColor: i % 2 === 0 ? "#C9A84C" : "#4A9B8E" }}
+                    >
+                      <CheckCircle2 size={11} style={{ color: "#0D0D0D" }} />
+                    </span>
+                    <span className="text-sm" style={{ color: "#888888" }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {["18+ Years Old", "Primary Care Completed", "6 Weeks Minimum Sobriety"].map((tag, i) => (
+                  <span
+                    key={i}
+                    className="px-5 py-2 rounded-full text-xs font-semibold"
+                    style={{
+                      backgroundColor: "#1C1C1C",
+                      border: `1px solid ${i % 2 === 0 ? "#C9A84C" : "#4A9B8E"}`,
+                      color: i % 2 === 0 ? "#C9A84C" : "#4A9B8E"
+                    }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="lg:w-1/2 relative">
+              <div className="relative h-80 w-full rounded-2xl overflow-hidden" style={{ border: "1px solid #2C2C2C" }}>
+                <Image
+                  src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1000&q=80"
+                  alt="Recovery group session"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0" style={{ backgroundColor: "#111111", opacity: 0.3 }} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            {/* Key Focus Areas */}
-            <section className="py-24 bg-white">
-                <div className="container mx-auto px-6">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl font-serif text-[var(--primary)] mb-4 font-bold">Key Areas of Secondary Care Programme</h2>
-                        <p className="text-gray-600 max-w-2xl mx-auto font-medium">
-                            Our structured approach ensures every aspect of recovery is addressed with clinical excellence and personal care.
-                        </p>
-                    </div>
+      {/* CTA */}
+      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: "#0D0D0D" }}>
+        <div className="absolute inset-0">
+          <Image
+            src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=80"
+            alt="Take next step"
+            fill
+            className="object-cover opacity-10"
+          />
+        </div>
+        <div className="relative max-w-3xl mx-auto px-6 text-center">
+          <h2
+            className="text-4xl font-bold mb-6"
+            style={{ fontFamily: "var(--font-playfair), serif", color: "#F0F0F0" }}
+          >
+            Take the Next Step
+          </h2>
+          <p className="text-sm mb-10" style={{ color: "#888888" }}>
+            If you or a loved one are ready to bridge the gap to a permanent, sober lifestyle, we are here to help.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/referral/apply"
+              className="inline-flex items-center gap-2 font-bold px-10 py-4 rounded-md text-sm"
+              style={{ backgroundColor: "#C9A84C", color: "#0D0D0D" }}
+            >
+              Apply Now <ArrowRight size={16} />
+            </Link>
+            <Link
+              href="/eligibility"
+              className="inline-flex items-center gap-2 font-medium px-10 py-4 rounded-md text-sm"
+              style={{ border: "1px solid #2C2C2C", color: "#888888" }}
+            >
+              View Eligibility <ArrowRight size={16} />
+            </Link>
+          </div>
+        </div>
+      </section>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                        {[
-                            "Building Self-Confidence",
-                            "Repairing and Maintaining Relationships",
-                            "Strategies for Managing Stress",
-                            "Relapse Prevention",
-                            "12 Step Programme Consolidation",
-                            "Weekly Group Therapy",
-                            "Individual Care Planning",
-                            "Recognising Triggers and how to manage them",
-                            "Structured Daily routine",
-                            "Building a support network",
-                            "How to manage cravings if they occur",
-                            "Developing skills in budget and meal planning",
-                            "How to take responsibility in personal life"
-                        ].map((area, index) => (
-                            <div key={index} className="flex gap-4 items-center p-6 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-all group">
-                                <div className="w-10 h-10 rounded-full bg-[var(--primary)] flex items-center justify-center text-white shrink-0 font-bold">
-                                    {index + 1}
-                                </div>
-                                <h4 className="text-lg font-bold text-[var(--primary)] group-hover:text-[var(--accent)] transition-colors">{area}</h4>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="mt-20 text-center max-w-4xl mx-auto p-12 bg-gray-50 border border-gray-100 rounded-[3rem] relative">
-                        <h3 className="text-2xl font-serif text-[var(--primary)] mb-6">Is Secondary Treatment Right for You or Your Loved One?</h3>
-                        <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto mb-8">
-                            If you or someone you care about has completed detox or residential rehab but still needs structure and support, secondary treatment may be the next vital step. It provides the time, tools, and environment needed to build a strong foundation for lifelong recovery.
-                        </p>
-                        <div className="bg-[var(--primary)] text-white p-8 rounded-2xl italic">
-                            "The structure of the programme incorporates a balance of freedom and timetabled events and enables the confidence and resilience to build on recovery gains."
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Target Audience Section */}
-            <section className="py-24 bg-gray-50">
-                <div className="container mx-auto px-6 text-center">
-                    <div className="max-w-4xl mx-auto">
-                        <h2 className="text-4xl font-serif text-[var(--primary)] mb-8">Who is it for?</h2>
-                        <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed font-medium">
-                            The service is available to adults aged 18 and over who have completed a recognised primary treatment programme, have had GP intervention and/or maintained sobriety for a minimum of 6 weeks.
-                            <br /><br />
-                            We work in close partnership with <strong>Change Grow Live (CGL)</strong>, <strong>Turning Point</strong>, <strong>With You (formerly Addaction)</strong>, <strong>NHS Substance Misuse Teams</strong>, <strong>Social Workers</strong>, and <strong>Probation Services</strong>.
-                        </p>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left max-w-3xl mx-auto mb-12">
-                            <div className="flex gap-4 p-6 bg-white rounded-2xl border border-gray-100 shadow-sm">
-                                <CheckCircle2 className="text-[var(--accent)] shrink-0" size={24} />
-                                <p className="text-gray-700 font-medium">Clients may present with co-occurring mental health needs; care is tailored accordingly.</p>
-                            </div>
-                            <div className="flex gap-4 p-6 bg-white rounded-2xl border border-gray-100 shadow-sm">
-                                <CheckCircle2 className="text-[var(--accent)] shrink-0" size={24} />
-                                <p className="text-gray-700 font-medium">Clients must demonstrate readiness to engage actively in treatment and recovery activities.</p>
-                            </div>
-                        </div>
-                        <div className="flex justify-center flex-wrap gap-4">
-                            <span className="bg-white border border-gray-100 px-6 py-2 rounded-full text-sm font-bold text-[var(--primary)] shadow-sm">18+ Years Old</span>
-                            <span className="bg-white border border-gray-100 px-6 py-2 rounded-full text-sm font-bold text-[var(--primary)] shadow-sm">Primary Care Completed</span>
-                            <span className="bg-white border border-gray-100 px-6 py-2 rounded-full text-sm font-bold text-[var(--primary)] shadow-sm">6 Weeks Minimum Sobriety</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Call to Action */}
-            <section className="py-24 bg-[var(--primary)] text-white text-center">
-                <div className="container mx-auto px-6">
-                    <h2 className="text-4xl font-serif mb-8">Take the Next Step</h2>
-                    <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-10">
-                        If you or a loved one are ready to bridge the gap to a permanent, sober lifestyle, we are here to help.
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Link href="/contact" className="btn-primary px-10 py-4 text-lg">
-                            Apply Now
-                        </Link>
-                        <Link href="/eligibility" className="glass text-white border border-white/20 px-10 py-4 rounded-full font-bold hover:bg-white/10 transition-all text-lg">
-                            Eligibility Criteria
-                        </Link>
-                    </div>
-                </div>
-            </section>
-        </main>
-    );
+    </main>
+  );
 };
 
 export default ProgrammePage;

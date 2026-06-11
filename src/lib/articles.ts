@@ -137,7 +137,7 @@ export const ARTICLES: Article[] = [
     readTime: "6 min",
     excerpt: "Choosing to stay sober in a society that revolves around alcohol takes intention, courage, and community. Learn how to navigate it without feeling like the odd one out.",
     date: "Jan 08, 2024",
-    image: "https://images.unsplash.com/photo-1527137341206-18239396264d?auto=format&fit=crop&w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1517093602195-b40af9929f40?auto=format&fit=crop&w=1200&q=80",
     content: [
       "Let’s be honest: choosing to stay sober in a society that seems to revolve around alcohol isn’t always easy. From casual happy hours to “wine o’clock” memes and celebratory champagne toasts, alcohol is deeply woven into the social fabric. But here you are—choosing something different. Whether you're newly sober, sober-curious, or years into your journey, staying alcohol-free in a world that drinks takes intention, courage, and community.",
       "So how do you navigate it all without feeling like the odd one out? Let’s talk about it.",

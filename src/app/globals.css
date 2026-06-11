@@ -1,83 +1,53 @@
 @import "tailwindcss";
 
 :root {
-  --primary: #001a3e;
-  /* Deep Navy */
-  --accent: #d4af37;
-  /* Soft Gold */
-  --background: #ffffff;
-  --foreground: #111111;
+  /* ── Dark Base ── */
+  --bg-main:    #111111;
+  --bg-card:    #1C1C1C;
+  --bg-section: #161616;
+  --bg-deep:    #0D0D0D;
+  --border:     #2C2C2C;
+
+  /* ── Dual Accents ── */
+  --gold:       #C9A84C;
+  --teal:       #4A9B8E;
+
+  /* ── Text ── */
+  --text-primary: #F0F0F0;
+  --text-muted:   #888888;
+  --text-dim:     #555555;
+}
+
+/* ── Base ──────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  background-color: var(--bg-main);
+  color: var(--text-primary);
   font-family: var(--font-inter), Arial, sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* High Contrast Headers */
-h1,
-h2,
-h3,
-h4 {
-  font-family: var(--font-playfair), serif;
-  color: var(--primary);
+/* ── Typography ────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair), Georgia, serif;
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 1.2;
+  color: var(--text-primary);
 }
 
-/* Base Body Text */
-p,
-li,
-span {
-  color: #1a1a1a;
-  line-height: 1.7;
+p, li, span {
+  line-height: 1.75;
 }
 
-/* Helper classes for dark backgrounds */
-.text-white,
-.text-white p,
-.text-white span,
-.text-white li,
-.text-white h1,
-.text-white h2,
-.text-white h3 {
-  color: #ffffff !important;
-}
+/* ── Scrollbar ─────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #0D0D0D; }
+::-webkit-scrollbar-thumb { background: #C9A84C; border-radius: 4px; }
 
-.text-gray-300,
-.text-gray-300 p,
-.text-gray-300 span {
-  color: #d1d5db !important;
-}
-
-/* Premium Buttons */
-.btn-primary {
-  background-color: var(--primary);
-  color: #ffffff;
-  padding: 1rem 2.5rem;
-  border-radius: 9999px;
-  font-weight: 700;
-  transition: all 0.3s ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  border: 2px solid var(--primary);
-}
-
-.btn-primary:hover {
-  background-color: transparent;
-  color: var(--primary);
-}
-
-.btn-accent {
-  background-color: var(--accent);
-  color: var(--primary);
-  padding: 1rem 2.5rem;
-  border-radius: 9999px;
-  font-weight: 700;
-  transition: all 0.3s ease-in-out;
-}
+/* ── Selection ─────────────────────────────── */
+::selection { background: #C9A84C33; color: #C9A84C; }

@@ -1,62 +1,134 @@
-import React from 'react';
-import { Home, MessageSquare, GraduationCap, ShieldAlert, Users } from 'lucide-react';
+"use client";
+import Image from "next/image";
+import { Home, MessageSquare, GraduationCap, ShieldAlert, Users, HeartHandshake } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 const offers = [
-    {
-        title: "Safe, Supportive Housing",
-        desc: "Live in a sober, structured environment with peers who understand your journey.",
-        icon: <Home className="text-[var(--accent)]" size={32} />
-    },
-    {
-        title: "Counselling",
-        desc: "Continue individual and group therapy with experienced addiction specialists.",
-        icon: <MessageSquare className="text-[var(--accent)]" size={32} />
-    },
-    {
-        title: "Life Skills & Education",
-        desc: "Learn budgeting, job readiness, emotional regulation, and more.",
-        icon: <GraduationCap className="text-[var(--accent)]" size={32} />
-    },
-    {
-        title: "Relapse Prevention Planning",
-        desc: "Build a personalised strategy to stay on track and identify early warning signs.",
-        icon: <ShieldAlert className="text-[var(--accent)]" size={32} />
-    },
-    {
-        title: "Community & Peer Support",
-        desc: "Create meaningful connections through shared experiences and mutual support.",
-        icon: <Users className="text-[var(--accent)]" size={32} />
-    }
+  {
+    title: "Safe, Supportive Housing",
+    desc: "Live in a sober, structured environment with peers who truly understand your journey.",
+    icon: Home,
+    accent: "#C9A84C",
+    image: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    title: "Individual Counselling",
+    desc: "Continue therapy with experienced addiction specialists tailored to your individual needs.",
+    icon: MessageSquare,
+    accent: "#4A9B8E",
+    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    title: "Life Skills & Education",
+    desc: "Learn budgeting, job readiness, emotional regulation, and practical independence tools.",
+    icon: GraduationCap,
+    accent: "#C9A84C",
+    image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    title: "Relapse Prevention",
+    desc: "Build a personalised strategy to stay on track and identify early warning signs before they escalate.",
+    icon: ShieldAlert,
+    accent: "#4A9B8E",
+    image: "https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    title: "Community & Peer Support",
+    desc: "Create meaningful connections through shared experiences and mutual accountability.",
+    icon: Users,
+    accent: "#C9A84C",
+    image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    title: "Family Involvement",
+    desc: "Rebuild trust through structured family sessions and open, guided communication.",
+    icon: HeartHandshake,
+    accent: "#4A9B8E",
+    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80",
+  },
 ];
 
 const SpecialistCare = () => {
-    return (
-        <section className="py-24 bg-gray-50">
-            <div className="container mx-auto px-6">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-serif text-[var(--primary)] mb-6">What We Offer</h2>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                        Our comprehensive range of services is designed to provide the necessary support and structure for a successful transition.
-                    </p>
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) setVisible(true); },
+      { threshold: 0.08 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section className="py-24" style={{ backgroundColor: "#111111" }}>
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Heading */}
+        <div className="text-center mb-14">
+          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "#C9A84C" }}>
+            What We Offer
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4"
+            style={{ fontFamily: "var(--font-playfair), serif", color: "#F0F0F0" }}>
+            Comprehensive Specialist Care
+          </h2>
+          <p className="text-sm max-w-xl mx-auto leading-relaxed" style={{ color: "#888888" }}>
+            Every service at Canalside House is designed to provide the structure and support you need for a successful transition to independent living.
+          </p>
+        </div>
+
+        {/* Cards */}
+        <div
+          ref={ref}
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-700 ${
+            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          {offers.map((offer) => {
+            const Icon = offer.icon;
+            return (
+              <div
+                key={offer.title}
+                className="rounded-2xl overflow-hidden group transition-all duration-300 hover:-translate-y-1"
+                style={{ backgroundColor: "#1C1C1C", border: "1px solid #2C2C2C" }}
+                onMouseEnter={e => (e.currentTarget.style.borderColor = offer.accent)}
+                onMouseLeave={e => (e.currentTarget.style.borderColor = "#2C2C2C")}
+              >
+                {/* Card image */}
+                <div className="relative h-40 overflow-hidden">
+                  <Image
+                    src={offer.image}
+                    alt={offer.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0" style={{ backgroundColor: "#0D0D0D", opacity: 0.5 }} />
+                  {/* Icon badge top-left */}
+                  <div className="absolute bottom-3 left-4 w-9 h-9 rounded-lg flex items-center justify-center"
+                    style={{ backgroundColor: offer.accent }}>
+                    <Icon size={16} style={{ color: "#0D0D0D" }} />
+                  </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {offers.map((offer, index) => (
-                        <div
-                            key={index}
-                            className="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group"
-                        >
-                            <div className="mb-6 p-4 bg-gray-50 rounded-2xl w-fit group-hover:bg-[var(--primary)] group-hover:text-white transition-colors duration-300">
-                                {offer.icon}
-                            </div>
-                            <h3 className="text-xl font-bold text-[var(--primary)] mb-4">{offer.title}</h3>
-                            <p className="text-gray-600 leading-relaxed">{offer.desc}</p>
-                        </div>
-                    ))}
+                {/* Body */}
+                <div className="p-5">
+                  <div className="w-6 h-0.5 mb-3 rounded-full" style={{ backgroundColor: offer.accent }} />
+                  <h3 className="text-base font-bold mb-2"
+                    style={{ fontFamily: "var(--font-playfair), serif", color: "#F0F0F0" }}>
+                    {offer.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed" style={{ color: "#888888" }}>
+                    {offer.desc}
+                  </p>
                 </div>
-            </div>
-        </section>
-    );
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default SpecialistCare;

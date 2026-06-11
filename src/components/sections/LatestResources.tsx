@@ -1,73 +1,110 @@
+"use client";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Clock } from "lucide-react";
-
-const resources = [
-  {
-    title: "Anxiety and Depression: The Trap of Self-Medication",
-    excerpt: "Understanding how mental health issues and substance abuse often go hand-in-hand...",
-    readTime: "5 min read",
-    image: "https://images.unsplash.com/photo-1499209974431-9dac3adaf471?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    slug: "anxiety-and-depression",
-  },
-  {
-    title: "Dealing With Relapse: A Setback, Not the End",
-    excerpt: "Recovery is a journey, and sometimes obstacles happen. Learn how to get back on track...",
-    readTime: "4 min read",
-    image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    slug: "dealing-with-relapse",
-  },
-  {
-    title: "How to Help a Loved One in Rehab",
-    excerpt: "Practical advice for families on how to provide support without losing themselves...",
-    readTime: "6 min read",
-    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    slug: "helping-loved-ones",
-  },
-];
+import { ARTICLES } from "@/lib/articles";
+import { useEffect, useRef, useState } from "react";
 
 const LatestResources = () => {
+  const displayArticles = ARTICLES.slice(0, 3);
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) setVisible(true); },
+      { threshold: 0.08 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  const accentColors = ["#C9A84C", "#4A9B8E", "#C9A84C"];
+
   return (
-    <section className="py-24 bg-white">
-      <div className="container mx-auto px-6">
-        <div className="flex justify-between items-end mb-12">
+    <section className="py-24" style={{ backgroundColor: "#161616" }}>
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Header */}
+        <div className="flex items-end justify-between mb-12">
           <div>
-            <h2 className="text-4xl font-serif text-[var(--primary)] mb-4">Latest Resources</h2>
-            <p className="text-gray-600">Guidance and support for your recovery journey.</p>
+            <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: "#4A9B8E" }}>
+              Knowledge &amp; Guidance
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold"
+              style={{ fontFamily: "var(--font-playfair), serif", color: "#F0F0F0" }}>
+              Latest Resources
+            </h2>
           </div>
-          <Link href="/resources" className="hidden md:flex items-center gap-2 text-[var(--primary)] font-bold hover:text-[var(--accent)] transition-colors">
-            View All Resources <ArrowRight size={20} />
+          <Link href="/resources"
+            className="hidden md:flex items-center gap-1.5 text-sm font-semibold transition-all duration-300 hover:gap-3"
+            style={{ color: "#C9A84C" }}>
+            View All <ArrowRight size={15} />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {resources.map((res, index) => (
-            <div key={index} className="group cursor-pointer">
-              <div className="relative h-64 mb-6 overflow-hidden rounded-2xl">
-                <img 
-                  src={res.image} 
-                  alt={res.title} 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        {/* Cards */}
+        <div
+          ref={ref}
+          className={`grid grid-cols-1 md:grid-cols-3 gap-6 transition-all duration-700 ${
+            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          {displayArticles.map((article, i) => (
+            <Link
+              key={article.slug}
+              href={`/resources/${article.slug}`}
+              className="group rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1"
+              style={{ backgroundColor: "#1C1C1C", border: "1px solid #2C2C2C" }}
+              onMouseEnter={e => (e.currentTarget.style.borderColor = accentColors[i])}
+              onMouseLeave={e => (e.currentTarget.style.borderColor = "#2C2C2C")}
+            >
+              {/* Image */}
+              <div className="relative h-48 overflow-hidden shrink-0">
+                <Image
+                  src={article.image}
+                  alt={article.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
-                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
-                  <Clock size={14} /> {res.readTime}
+                <div className="absolute inset-0" style={{ backgroundColor: "#0D0D0D", opacity: 0.35 }} />
+                {/* Category tag */}
+                <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-xs font-semibold"
+                  style={{ backgroundColor: accentColors[i], color: "#0D0D0D" }}>
+                  {article.category}
                 </div>
               </div>
-              <h3 className="text-xl font-serif font-bold mb-3 group-hover:text-[var(--accent)] transition-colors line-clamp-2">
-                {res.title}
-              </h3>
-              <p className="text-gray-600 mb-4 line-clamp-2">
-                {res.excerpt}
-              </p>
-              <Link href={`/resources/${res.slug}`} className="text-sm font-bold flex items-center gap-1 text-[var(--primary)]">
-                Read More <ArrowRight size={16} />
-              </Link>
-            </div>
+
+              {/* Body */}
+              <div className="p-5 flex flex-col flex-1">
+                <span className="inline-flex items-center gap-1.5 text-xs font-medium mb-3"
+                  style={{ color: "#888888" }}>
+                  <Clock size={11} /> {article.readTime} read
+                </span>
+
+                <h3 className="text-base font-bold mb-2 line-clamp-2 leading-snug"
+                  style={{ fontFamily: "var(--font-playfair), serif", color: "#F0F0F0" }}>
+                  {article.title}
+                </h3>
+
+                <p className="text-sm leading-relaxed line-clamp-3 mb-5 flex-1" style={{ color: "#888888" }}>
+                  {article.excerpt}
+                </p>
+
+                <span className="inline-flex items-center gap-1 text-sm font-semibold group-hover:gap-2 transition-all duration-300"
+                  style={{ color: accentColors[i] }}>
+                  Read More <ArrowRight size={13} />
+                </span>
+              </div>
+            </Link>
           ))}
         </div>
-        
-        <div className="mt-12 md:hidden">
-          <Link href="/resources" className="btn-primary w-full text-center inline-block">
-            View All Resources
+
+        {/* Mobile CTA */}
+        <div className="mt-10 md:hidden">
+          <Link href="/resources"
+            className="flex items-center justify-center gap-2 font-bold px-7 py-3 rounded-md text-sm w-full transition-all duration-300"
+            style={{ backgroundColor: "#C9A84C", color: "#0D0D0D" }}>
+            View All Resources <ArrowRight size={15} />
           </Link>
         </div>
       </div>
