@@ -6,16 +6,6 @@ import {
   ChevronRight, ChevronLeft, CheckCircle2, Activity
 } from "lucide-react";
 
-const inputStyle: React.CSSProperties = {
-  width: "100%", padding: "13px 16px", backgroundColor: "#111111",
-  border: "1px solid #2C2C2C", borderRadius: "10px", color: "#EEEEEE",
-  fontSize: "14px", outline: "none", transition: "border-color 0.2s",
-};
-const labelStyle: React.CSSProperties = {
-  display: "block", fontSize: "11px", fontWeight: 700,
-  letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "8px", color: "#888888",
-};
-
 const steps = [
   { icon: Building2, label: "Referrer" },
   { icon: User, label: "Client" },
@@ -30,23 +20,38 @@ const ReferralForm = () => {
   const nextStep = () => setStep(p => Math.min(p + 1, 4));
   const prevStep = () => setStep(p => Math.max(p - 1, 1));
 
+  // Styles defined inside component so CSS vars resolve correctly at runtime
+  const inputStyle: React.CSSProperties = {
+    width: "100%", padding: "13px 16px",
+    backgroundColor: "var(--bg-main)",
+    border: "1px solid var(--border)",
+    borderRadius: "10px",
+    color: "var(--text-primary)",
+    fontSize: "14px", outline: "none", transition: "border-color 0.2s",
+  };
+  const labelStyle: React.CSSProperties = {
+    display: "block", fontSize: "11px", fontWeight: 700,
+    letterSpacing: "0.08em", textTransform: "uppercase",
+    marginBottom: "8px", color: "var(--text-muted)",
+  };
+
   if (submitted) {
     return (
-      <main style={{ backgroundColor: "#111111" }} className="pt-20 min-h-screen flex items-center justify-center">
+      <main style={{ backgroundColor: "var(--bg-main)" }} className="pt-20 min-h-screen flex items-center justify-center transition-colors duration-300">
         <div className="text-center px-6 max-w-lg mx-auto">
-          <div className="w-24 h-24 rounded-2xl flex items-center justify-center mx-auto mb-8" style={{ backgroundColor: "#C9A84C" }}>
-            <CheckCircle2 size={44} style={{ color: "#0D0D0D" }} />
+          <div className="w-24 h-24 rounded-2xl flex items-center justify-center mx-auto mb-8" style={{ backgroundColor: "var(--gold)" }}>
+            <CheckCircle2 size={44} style={{ color: "var(--text-on-accent)" }} />
           </div>
-          <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "#4A9B8E" }}>Success</p>
-          <h1 className="text-4xl font-bold mb-6" style={{ fontFamily: "var(--font-playfair), serif", color: "#F0F0F0" }}>
+          <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--teal)" }}>Success</p>
+          <h1 className="text-4xl font-bold mb-6" style={{ fontFamily: "var(--font-playfair), serif", color: "var(--text-primary)" }}>
             Referral Submitted
           </h1>
-          <p className="text-sm mb-10 leading-relaxed" style={{ color: "#888888" }}>
+          <p className="text-sm mb-10 leading-relaxed" style={{ color: "var(--text-muted)" }}>
             Thank you. Our admissions team will review the information and contact you within 24 hours to discuss the next steps.
           </p>
           <Link href="/referral"
-            className="inline-flex items-center gap-2 font-bold px-10 py-4 rounded-md text-sm"
-            style={{ backgroundColor: "#C9A84C", color: "#0D0D0D" }}>
+            className="inline-flex items-center gap-2 font-bold px-10 py-4 rounded-md text-sm transition-opacity hover:opacity-85"
+            style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}>
             Return to Referrals
           </Link>
         </div>
@@ -55,16 +60,16 @@ const ReferralForm = () => {
   }
 
   return (
-    <main style={{ backgroundColor: "#111111" }} className="pt-20 pb-24 min-h-screen">
+    <main style={{ backgroundColor: "var(--bg-main)" }} className="pt-20 pb-24 min-h-screen transition-colors duration-300">
       <div className="max-w-3xl mx-auto px-6 pt-12">
 
         {/* Header */}
         <div className="text-center mb-12">
-          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "#4A9B8E" }}>Confidential</p>
-          <h1 className="text-4xl md:text-5xl font-bold mb-3" style={{ fontFamily: "var(--font-playfair), serif", color: "#F0F0F0" }}>
+          <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--teal)" }}>Confidential</p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-3" style={{ fontFamily: "var(--font-playfair), serif", color: "var(--text-primary)" }}>
             Professional Referral Form
           </h1>
-          <p className="text-sm italic" style={{ color: "#666666", fontFamily: "var(--font-playfair), serif" }}>
+          <p className="text-sm italic" style={{ color: "var(--text-dim)", fontFamily: "var(--font-playfair), serif" }}>
             A confidential clinical assessment referral
           </p>
         </div>
@@ -72,10 +77,10 @@ const ReferralForm = () => {
         {/* Progress Steps */}
         <div className="mb-12 relative">
           {/* Track */}
-          <div className="absolute top-6 left-0 w-full h-0.5" style={{ backgroundColor: "#2C2C2C" }}>
+          <div className="absolute top-6 left-0 w-full h-0.5" style={{ backgroundColor: "var(--border)" }}>
             <div
               className="h-full transition-all duration-500"
-              style={{ width: `${((step - 1) / 3) * 100}%`, backgroundColor: "#C9A84C" }}
+              style={{ width: `${((step - 1) / 3) * 100}%`, backgroundColor: "var(--gold)" }}
             />
           </div>
           {/* Step bubbles */}
@@ -88,18 +93,18 @@ const ReferralForm = () => {
                   <div
                     className="w-12 h-12 rounded-full flex items-center justify-center z-10 transition-all duration-300"
                     style={{
-                      backgroundColor: done ? "#C9A84C" : active ? "#C9A84C" : "#1C1C1C",
-                      border: active ? "3px solid #C9A84C" : done ? "none" : "1px solid #2C2C2C",
+                      backgroundColor: done || active ? "var(--gold)" : "var(--bg-card)",
+                      border: active ? "3px solid var(--gold)" : done ? "none" : "1px solid var(--border)",
                       boxShadow: active ? "0 0 0 4px rgba(201,168,76,0.15)" : "none",
                     }}
                   >
                     {done
-                      ? <CheckCircle2 size={20} style={{ color: "#0D0D0D" }} />
-                      : <Icon size={20} style={{ color: active ? "#0D0D0D" : "#555555" }} />
+                      ? <CheckCircle2 size={20} style={{ color: "var(--text-on-accent)" }} />
+                      : <Icon size={20} style={{ color: active ? "var(--text-on-accent)" : "var(--text-dim)" }} />
                     }
                   </div>
                   <span className="text-xs font-bold uppercase tracking-wider"
-                    style={{ color: step >= idx + 1 ? "#C9A84C" : "#444444" }}>
+                    style={{ color: step >= idx + 1 ? "var(--gold)" : "var(--text-dim)" }}>
                     {label}
                   </span>
                 </div>
@@ -109,17 +114,17 @@ const ReferralForm = () => {
         </div>
 
         {/* Form Card */}
-        <div className="rounded-2xl p-8 md:p-10" style={{ backgroundColor: "#1C1C1C", border: "1px solid #2C2C2C" }}>
+        <div className="rounded-2xl p-8 md:p-10" style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border)" }}>
           <form onSubmit={e => { e.preventDefault(); step === 4 ? setSubmitted(true) : nextStep(); }}>
 
             {/* Step 1: Referrer */}
             {step === 1 && (
               <div className="space-y-6">
-                <div className="flex items-center gap-3 pb-5 mb-6" style={{ borderBottom: "1px solid #2C2C2C" }}>
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ backgroundColor: "#C9A84C" }}>
-                    <Building2 size={16} style={{ color: "#0D0D0D" }} />
+                <div className="flex items-center gap-3 pb-5 mb-6" style={{ borderBottom: "1px solid var(--border)" }}>
+                  <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ backgroundColor: "var(--gold)" }}>
+                    <Building2 size={16} style={{ color: "var(--text-on-accent)" }} />
                   </div>
-                  <h2 className="text-xl font-bold" style={{ color: "#F0F0F0" }}>Referrer Information</h2>
+                  <h2 className="text-xl font-bold" style={{ color: "var(--text-primary)" }}>Referrer Information</h2>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   {[
@@ -132,8 +137,8 @@ const ReferralForm = () => {
                     <div key={label} className={label.includes("Phone") ? "md:col-span-2" : ""}>
                       <label style={labelStyle}>{label}</label>
                       <input required type={type} placeholder={placeholder} style={inputStyle}
-                        onFocus={e => (e.target.style.borderColor = "#C9A84C")}
-                        onBlur={e => (e.target.style.borderColor = "#2C2C2C")} />
+                        onFocus={e => (e.target.style.borderColor = "var(--gold)")}
+                        onBlur={e => (e.target.style.borderColor = "var(--border)")} />
                     </div>
                   ))}
                 </div>
@@ -143,30 +148,30 @@ const ReferralForm = () => {
             {/* Step 2: Client */}
             {step === 2 && (
               <div className="space-y-6">
-                <div className="flex items-center gap-3 pb-5 mb-6" style={{ borderBottom: "1px solid #2C2C2C" }}>
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ backgroundColor: "#4A9B8E" }}>
-                    <User size={16} style={{ color: "#0D0D0D" }} />
+                <div className="flex items-center gap-3 pb-5 mb-6" style={{ borderBottom: "1px solid var(--border)" }}>
+                  <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ backgroundColor: "var(--teal)" }}>
+                    <User size={16} style={{ color: "var(--text-on-accent)" }} />
                   </div>
-                  <h2 className="text-xl font-bold" style={{ color: "#F0F0F0" }}>Client Information</h2>
+                  <h2 className="text-xl font-bold" style={{ color: "var(--text-primary)" }}>Client Information</h2>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div>
                     <label style={labelStyle}>Client Initials (For Privacy)</label>
                     <input required type="text" placeholder="e.g. J.D." style={inputStyle}
-                      onFocus={e => (e.target.style.borderColor = "#4A9B8E")}
-                      onBlur={e => (e.target.style.borderColor = "#2C2C2C")} />
+                      onFocus={e => (e.target.style.borderColor = "var(--teal)")}
+                      onBlur={e => (e.target.style.borderColor = "var(--border)")} />
                   </div>
                   <div>
                     <label style={labelStyle}>Date of Birth *</label>
-                    <input required type="date" style={{ ...inputStyle, colorScheme: "dark" }}
-                      onFocus={e => (e.target.style.borderColor = "#4A9B8E")}
-                      onBlur={e => (e.target.style.borderColor = "#2C2C2C")} />
+                    <input required type="date" style={inputStyle}
+                      onFocus={e => (e.target.style.borderColor = "var(--teal)")}
+                      onBlur={e => (e.target.style.borderColor = "var(--border)")} />
                   </div>
                   <div>
                     <label style={labelStyle}>Gender Identity</label>
                     <select style={{ ...inputStyle, cursor: "pointer" }}
-                      onFocus={e => (e.target.style.borderColor = "#4A9B8E")}
-                      onBlur={e => (e.target.style.borderColor = "#2C2C2C")}>
+                      onFocus={e => (e.target.style.borderColor = "var(--teal)")}
+                      onBlur={e => (e.target.style.borderColor = "var(--border)")}>
                       <option value="male">Male</option>
                       <option value="female">Female</option>
                       <option value="non-binary">Non-binary</option>
@@ -176,15 +181,15 @@ const ReferralForm = () => {
                   <div>
                     <label style={labelStyle}>Current Location *</label>
                     <input required type="text" placeholder="e.g. Detox Unit / Rehab Name" style={inputStyle}
-                      onFocus={e => (e.target.style.borderColor = "#4A9B8E")}
-                      onBlur={e => (e.target.style.borderColor = "#2C2C2C")} />
+                      onFocus={e => (e.target.style.borderColor = "var(--teal)")}
+                      onBlur={e => (e.target.style.borderColor = "var(--border)")} />
                   </div>
                   <div className="md:col-span-2">
                     <label style={labelStyle}>Current Housing Status</label>
                     <textarea rows={3} placeholder="Briefly describe current living situation..."
                       style={{ ...inputStyle, resize: "none" }}
-                      onFocus={e => (e.target.style.borderColor = "#4A9B8E")}
-                      onBlur={e => (e.target.style.borderColor = "#2C2C2C")} />
+                      onFocus={e => (e.target.style.borderColor = "var(--teal)")}
+                      onBlur={e => (e.target.style.borderColor = "var(--border)")} />
                   </div>
                 </div>
               </div>
@@ -193,49 +198,49 @@ const ReferralForm = () => {
             {/* Step 3: Clinical */}
             {step === 3 && (
               <div className="space-y-6">
-                <div className="flex items-center gap-3 pb-5 mb-6" style={{ borderBottom: "1px solid #2C2C2C" }}>
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ backgroundColor: "#C9A84C" }}>
-                    <Stethoscope size={16} style={{ color: "#0D0D0D" }} />
+                <div className="flex items-center gap-3 pb-5 mb-6" style={{ borderBottom: "1px solid var(--border)" }}>
+                  <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ backgroundColor: "var(--gold)" }}>
+                    <Stethoscope size={16} style={{ color: "var(--text-on-accent)" }} />
                   </div>
-                  <h2 className="text-xl font-bold" style={{ color: "#F0F0F0" }}>Clinical Overview</h2>
+                  <h2 className="text-xl font-bold" style={{ color: "var(--text-primary)" }}>Clinical Overview</h2>
                 </div>
                 <div>
                   <label style={labelStyle}>Primary Substance of Misuse *</label>
                   <input required type="text" placeholder="e.g. Alcohol / Opioids" style={inputStyle}
-                    onFocus={e => (e.target.style.borderColor = "#C9A84C")}
-                    onBlur={e => (e.target.style.borderColor = "#2C2C2C")} />
+                    onFocus={e => (e.target.style.borderColor = "var(--gold)")}
+                    onBlur={e => (e.target.style.borderColor = "var(--border)")} />
                 </div>
                 <div>
                   <label style={labelStyle}>Length of Current Abstinence</label>
                   <input type="text" placeholder="e.g. 4 weeks" style={inputStyle}
-                    onFocus={e => (e.target.style.borderColor = "#C9A84C")}
-                    onBlur={e => (e.target.style.borderColor = "#2C2C2C")} />
+                    onFocus={e => (e.target.style.borderColor = "var(--gold)")}
+                    onBlur={e => (e.target.style.borderColor = "var(--border)")} />
                 </div>
                 <div>
                   <label style={labelStyle}>Mental Health Diagnosis (If any)</label>
                   <textarea rows={3} placeholder="Briefly list any diagnosed conditions..."
                     style={{ ...inputStyle, resize: "none" }}
-                    onFocus={e => (e.target.style.borderColor = "#C9A84C")}
-                    onBlur={e => (e.target.style.borderColor = "#2C2C2C")} />
+                    onFocus={e => (e.target.style.borderColor = "var(--gold)")}
+                    onBlur={e => (e.target.style.borderColor = "var(--border)")} />
                 </div>
                 <div>
                   <label style={labelStyle}>Primary Reason for Referral *</label>
                   <textarea required rows={4} placeholder="What are the goals for this individual?"
                     style={{ ...inputStyle, resize: "none" }}
-                    onFocus={e => (e.target.style.borderColor = "#C9A84C")}
-                    onBlur={e => (e.target.style.borderColor = "#2C2C2C")} />
+                    onFocus={e => (e.target.style.borderColor = "var(--gold)")}
+                    onBlur={e => (e.target.style.borderColor = "var(--border)")} />
                 </div>
                 {/* Risk alert */}
-                <div className="flex gap-4 p-5 rounded-xl" style={{ backgroundColor: "#1A0000", border: "1px solid #5C1A1A" }}>
-                  <ShieldAlert size={20} className="shrink-0 mt-0.5" style={{ color: "#FF6B6B" }} />
+                <div className="flex gap-4 p-5 rounded-xl" style={{ backgroundColor: "var(--bg-section)", border: "1px solid var(--border)" }}>
+                  <ShieldAlert size={20} className="shrink-0 mt-0.5" style={{ color: "var(--gold)" }} />
                   <div>
-                    <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "#FF6B6B" }}>Risk Assessment Note</p>
-                    <p className="text-xs mb-3" style={{ color: "#AA6666" }}>
+                    <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "var(--gold)" }}>Risk Assessment Note</p>
+                    <p className="text-xs mb-3" style={{ color: "var(--text-muted)" }}>
                       Please confirm that a full risk assessment has been completed and will follow this referral.
                     </p>
                     <label className="flex items-center gap-2 cursor-pointer">
                       <input required type="checkbox" />
-                      <span className="text-xs font-medium" style={{ color: "#CCAAAA" }}>
+                      <span className="text-xs font-medium" style={{ color: "var(--text-primary)" }}>
                         I confirm a full risk assessment is available.
                       </span>
                     </label>
@@ -247,29 +252,29 @@ const ReferralForm = () => {
             {/* Step 4: Review */}
             {step === 4 && (
               <div className="space-y-6">
-                <div className="flex items-center gap-3 pb-5 mb-6" style={{ borderBottom: "1px solid #2C2C2C" }}>
-                  <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ backgroundColor: "#4A9B8E" }}>
-                    <Activity size={16} style={{ color: "#0D0D0D" }} />
+                <div className="flex items-center gap-3 pb-5 mb-6" style={{ borderBottom: "1px solid var(--border)" }}>
+                  <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ backgroundColor: "var(--teal)" }}>
+                    <Activity size={16} style={{ color: "var(--text-on-accent)" }} />
                   </div>
-                  <h2 className="text-xl font-bold" style={{ color: "#F0F0F0" }}>Final Review</h2>
+                  <h2 className="text-xl font-bold" style={{ color: "var(--text-primary)" }}>Final Review</h2>
                 </div>
-                <div className="p-6 rounded-xl space-y-4" style={{ backgroundColor: "#161616", border: "1px solid #2C2C2C" }}>
-                  <p className="text-sm leading-relaxed italic" style={{ color: "#888888" }}>
+                <div className="p-6 rounded-xl space-y-4" style={{ backgroundColor: "var(--bg-section)", border: "1px solid var(--border)" }}>
+                  <p className="text-sm leading-relaxed italic" style={{ color: "var(--text-muted)" }}>
                     Please review the information provided. Once submitted, a copy of this referral will be sent to our admissions team and a confirmation emailed to your professional address.
                   </p>
                   <div className="space-y-3 pt-2">
                     {["Referrer details verified", "Client initials captured", "Risk confirmation selected"].map((item, i) => (
                       <div key={i} className="flex items-center gap-3">
                         <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0"
-                          style={{ backgroundColor: i % 2 === 0 ? "#C9A84C" : "#4A9B8E" }}>
-                          <CheckCircle2 size={11} style={{ color: "#0D0D0D" }} />
+                          style={{ backgroundColor: i % 2 === 0 ? "var(--gold)" : "var(--teal)" }}>
+                          <CheckCircle2 size={11} style={{ color: "var(--text-on-accent)" }} />
                         </div>
-                        <span className="text-sm" style={{ color: "#AAAAAA" }}>{item}</span>
+                        <span className="text-sm" style={{ color: "var(--text-primary)" }}>{item}</span>
                       </div>
                     ))}
                   </div>
-                  <div className="pt-4 mt-2" style={{ borderTop: "1px solid #2C2C2C" }}>
-                    <p className="text-xs" style={{ color: "#555555" }}>
+                  <div className="pt-4 mt-2" style={{ borderTop: "1px solid var(--border)" }}>
+                    <p className="text-xs" style={{ color: "var(--text-dim)" }}>
                       By submitting, you certify the client&apos;s consent to share this information for clinical assessment under GDPR and local data protection policies.
                     </p>
                   </div>
@@ -278,23 +283,23 @@ const ReferralForm = () => {
             )}
 
             {/* Navigation */}
-            <div className="mt-10 flex items-center justify-between pt-6" style={{ borderTop: "1px solid #2C2C2C" }}>
+            <div className="mt-10 flex items-center justify-between pt-6" style={{ borderTop: "1px solid var(--border)" }}>
               <button type="button" onClick={prevStep}
                 className={`flex items-center gap-2 font-bold px-6 py-3 rounded-xl text-sm transition-all ${step === 1 ? "opacity-0 pointer-events-none" : ""}`}
-                style={{ color: "#888888", border: "1px solid #2C2C2C" }}>
+                style={{ color: "var(--text-muted)", border: "1px solid var(--border)" }}>
                 <ChevronLeft size={16} /> Previous
               </button>
 
               {step === 4 ? (
                 <button type="submit"
-                  className="flex items-center gap-2 font-bold px-10 py-4 rounded-md text-sm"
-                  style={{ backgroundColor: "#C9A84C", color: "#0D0D0D" }}>
+                  className="flex items-center gap-2 font-bold px-10 py-4 rounded-md text-sm transition-opacity hover:opacity-85"
+                  style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}>
                   Submit Referral <Send size={16} />
                 </button>
               ) : (
                 <button type="submit"
-                  className="flex items-center gap-2 font-bold px-10 py-4 rounded-md text-sm"
-                  style={{ backgroundColor: "#C9A84C", color: "#0D0D0D" }}>
+                  className="flex items-center gap-2 font-bold px-10 py-4 rounded-md text-sm transition-opacity hover:opacity-85"
+                  style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}>
                   Next Step <ChevronRight size={16} />
                 </button>
               )}
@@ -302,9 +307,9 @@ const ReferralForm = () => {
           </form>
         </div>
 
-        <p className="mt-8 text-center text-xs" style={{ color: "#444444" }}>
+        <p className="mt-8 text-center text-xs" style={{ color: "var(--text-dim)" }}>
           Difficulty with the form? Contact us at{" "}
-          <span className="underline" style={{ color: "#666666" }}>referrals@canalside-house.co.uk</span>
+          <span className="underline" style={{ color: "var(--text-muted)" }}>referrals@canalside-house.co.uk</span>
         </p>
       </div>
     </main>

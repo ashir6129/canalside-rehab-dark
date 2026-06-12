@@ -2,7 +2,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, Sun, Moon } from "lucide-react";
+import { useTheme } from "@/lib/ThemeContext";
 
 const navLinks = [
   { name: "About", href: "/about" },
@@ -15,18 +16,30 @@ const navLinks = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const { theme, toggleTheme } = useTheme();
+
+  const isDark = theme === "dark";
 
   return (
-    <nav className="fixed w-full z-50" style={{ backgroundColor: "#0D0D0D", borderBottom: "1px solid #2C2C2C" }}>
+    <nav
+      className="fixed w-full z-50 transition-colors duration-300"
+      style={{
+        backgroundColor: "var(--nav-bg)",
+        borderBottom: "1px solid var(--nav-border)",
+      }}
+    >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
 
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 shrink-0">
-          <div className="w-9 h-9 rounded-md flex items-center justify-center" style={{ border: "1px solid #C9A84C", backgroundColor: "#1C1C1C" }}>
-            <span className="text-[10px] font-bold" style={{ color: "#C9A84C" }}>ETL</span>
+          <div
+            className="w-9 h-9 rounded-md flex items-center justify-center"
+            style={{ border: "1px solid var(--gold)", backgroundColor: "var(--bg-card)" }}
+          >
+            <span className="text-[10px] font-bold" style={{ color: "var(--gold)" }}>ETL</span>
           </div>
-          <span className="font-semibold text-base tracking-wide" style={{ color: "#F0F0F0" }}>
-            <span style={{ color: "#C9A84C" }}>Canalside</span> House
+          <span className="font-semibold text-base tracking-wide" style={{ color: "var(--text-primary)" }}>
+            <span style={{ color: "var(--gold)" }}>Canalside</span> House
           </span>
         </Link>
 
@@ -40,11 +53,11 @@ const Navbar = () => {
                 href={link.href}
                 className="text-sm font-medium transition-all duration-300 pb-0.5"
                 style={{
-                  color: isActive ? "#C9A84C" : "#F0F0F0",
-                  borderBottom: isActive ? "2px solid #C9A84C" : "2px solid transparent",
+                  color: isActive ? "var(--gold)" : "var(--text-primary)",
+                  borderBottom: isActive ? "2px solid var(--gold)" : "2px solid transparent",
                 }}
-                onMouseEnter={e => (e.currentTarget.style.color = "#C9A84C")}
-                onMouseLeave={e => !isActive && (e.currentTarget.style.color = "#F0F0F0")}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--gold)")}
+                onMouseLeave={(e) => !isActive && (e.currentTarget.style.color = "var(--text-primary)")}
               >
                 {link.name}
               </Link>
@@ -52,33 +65,72 @@ const Navbar = () => {
           })}
         </div>
 
-        {/* CTA */}
-        <div className="hidden md:flex">
+        {/* Right controls */}
+        <div className="hidden md:flex items-center gap-3">
+          {/* Theme toggle */}
+          <button
+            id="theme-toggle-btn"
+            onClick={toggleTheme}
+            aria-label="Toggle light/dark mode"
+            className="relative w-14 h-7 rounded-full transition-all duration-300 flex items-center px-1 focus:outline-none focus:ring-2 focus:ring-offset-1"
+            style={{
+              backgroundColor: isDark ? "#2C2C2C" : "#BCCBC9",
+              focusRingColor: "var(--teal)",
+            }}
+          >
+            {/* Track icons */}
+            <Moon size={12} className="absolute left-1.5" style={{ color: isDark ? "#C9A84C" : "#AAB8B6", opacity: isDark ? 1 : 0.4, transition: "opacity 0.3s" }} />
+            <Sun size={12} className="absolute right-1.5" style={{ color: isDark ? "#555555" : "#3A7A70", opacity: isDark ? 0.4 : 1, transition: "opacity 0.3s" }} />
+            {/* Thumb */}
+            <span
+              className="w-5 h-5 rounded-full shadow-md transition-transform duration-300 flex items-center justify-center"
+              style={{
+                backgroundColor: isDark ? "#C9A84C" : "#ffffff",
+                transform: isDark ? "translateX(0px)" : "translateX(28px)",
+                boxShadow: "0 1px 4px rgba(0,0,0,0.3)",
+              }}
+            />
+          </button>
+
+          {/* Contact CTA */}
           <Link
             href="/contact"
             className="flex items-center gap-2 font-semibold px-5 py-2 rounded-md text-sm transition-all duration-300"
-            style={{ backgroundColor: "#C9A84C", color: "#0D0D0D" }}
-            onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#4A9B8E")}
-            onMouseLeave={e => (e.currentTarget.style.backgroundColor = "#C9A84C")}
+            style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}
+            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "var(--teal)")}
+            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "var(--gold)")}
           >
             <Phone size={14} />
             Contact Us
           </Link>
         </div>
 
-        {/* Hamburger */}
-        <button
-          className="md:hidden transition-all duration-300"
-          style={{ color: "#F0F0F0" }}
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        {/* Hamburger + mobile theme toggle */}
+        <div className="md:hidden flex items-center gap-3">
+          <button
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            className="p-1.5 rounded-md transition-colors duration-300"
+            style={{ backgroundColor: "var(--bg-card)", color: "var(--text-primary)", border: "1px solid var(--border)" }}
+          >
+            {isDark ? <Sun size={16} style={{ color: "var(--gold)" }} /> : <Moon size={16} style={{ color: "var(--teal)" }} />}
+          </button>
+          <button
+            className="transition-all duration-300"
+            style={{ color: "var(--text-primary)" }}
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <div className="md:hidden px-6 pb-6 pt-4 flex flex-col gap-4" style={{ backgroundColor: "#0D0D0D", borderTop: "1px solid #2C2C2C" }}>
+        <div
+          className="md:hidden px-6 pb-6 pt-4 flex flex-col gap-4 transition-colors duration-300"
+          style={{ backgroundColor: "var(--nav-bg)", borderTop: "1px solid var(--nav-border)" }}
+        >
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -87,7 +139,7 @@ const Navbar = () => {
                 href={link.href}
                 onClick={() => setIsOpen(false)}
                 className="text-base font-medium transition-all duration-300"
-                style={{ color: isActive ? "#C9A84C" : "#F0F0F0" }}
+                style={{ color: isActive ? "var(--gold)" : "var(--text-primary)" }}
               >
                 {link.name}
               </Link>
@@ -96,8 +148,8 @@ const Navbar = () => {
           <Link
             href="/contact"
             onClick={() => setIsOpen(false)}
-            className="mt-2 flex items-center justify-center gap-2 font-semibold px-5 py-2.5 rounded-md text-sm"
-            style={{ backgroundColor: "#C9A84C", color: "#0D0D0D" }}
+            className="mt-2 flex items-center justify-center gap-2 font-semibold px-5 py-2.5 rounded-md text-sm transition-all duration-300"
+            style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}
           >
             <Phone size={14} />
             Contact Us
