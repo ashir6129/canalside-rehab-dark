@@ -75,7 +75,6 @@ const Navbar = () => {
             className="relative w-14 h-7 rounded-full transition-all duration-300 flex items-center px-1 focus:outline-none focus:ring-2 focus:ring-offset-1"
             style={{
               backgroundColor: isDark ? "#2C2C2C" : "#BCCBC9",
-              focusRingColor: "var(--teal)",
             }}
           >
             {/* Track icons */}
