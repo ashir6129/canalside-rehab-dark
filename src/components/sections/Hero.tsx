@@ -38,11 +38,11 @@ const Hero = () => {
       >
         {/* Label */}
         <div
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-7 text-xs font-semibold uppercase tracking-widest"
-          style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border)", color: "var(--gold)" }}
+          className="inline-flex items-center gap-2 px-5 py-2 rounded-full mb-8 text-sm font-bold uppercase tracking-widest shadow-md"
+          style={{ backgroundColor: "var(--bg-card)", border: "2px solid var(--gold)", color: "var(--gold)" }}
         >
-          <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ backgroundColor: "var(--teal)" }} />
-          A project of Rehbr UK limited and ETL
+          <span className="w-2 h-2 rounded-full inline-block animate-pulse" style={{ backgroundColor: "var(--gold)" }} />
+          A project of ETL and Rehbr UK limited
         </div>
 
         <h1

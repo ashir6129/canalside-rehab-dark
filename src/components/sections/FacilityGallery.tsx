@@ -26,10 +26,10 @@ const categories = [
   },
   {
     title: "Washrooms",
-    thumbnail: "/images/facility/wash1.jpeg",
+    thumbnail: "/images/facility/wash2.jpeg",
     images: [
-      "/images/facility/wash1.jpeg",
       "/images/facility/wash2.jpeg",
+      "/images/facility/wash1.jpeg",
     ]
   }
 ];

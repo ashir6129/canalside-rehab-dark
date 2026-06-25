@@ -28,7 +28,7 @@ const Footer = () => {
             </span>
           </div>
           <p className="text-sm leading-relaxed mb-6" style={{ color: "var(--text-muted)" }}>
-            A project of Rehbr UK limited and ETL Care — providing a safe, structured, and therapeutic environment where individuals in early recovery build foundations for sustainable sobriety.
+            A project of ETL and Rehbr UK limited — providing a safe, structured, and therapeutic environment where individuals in early recovery build foundations for sustainable sobriety.
           </p>
           <div className="flex gap-4">
             {[Instagram, Facebook, Linkedin].map((Icon, i) => (
@@ -117,7 +117,7 @@ const Footer = () => {
       {/* Bottom bar */}
       <div className="max-w-7xl mx-auto px-6 mt-14 pt-6" style={{ borderTop: "1px solid var(--border)" }}>
         <p className="text-center text-xs" style={{ color: "var(--text-dim)" }}>
-          © {new Date().getFullYear()} A project of Rehbr UK limited and ETL Care — Canalside House. All rights reserved. Registered in England & Wales.
+          © {new Date().getFullYear()} A project of ETL and Rehbr UK limited — Canalside House. All rights reserved. Registered in England & Wales.
         </p>
       </div>
     </footer>
