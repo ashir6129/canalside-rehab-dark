@@ -33,13 +33,13 @@ const Navbar = () => {
 
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 shrink-0">
-          <div className="relative w-28 h-28 flex items-center justify-center">
+          <div className="relative w-32 h-32 flex items-center justify-center -ml-4">
             <Image
               src="/images/logo-transparent.png"
               alt="ETL Logo"
               fill
-              className="object-contain"
-              sizes="112px"
+              className="object-contain scale-[1.8] transform origin-center"
+              sizes="128px"
             />
           </div>
           <span className="font-semibold text-base tracking-wide" style={{ color: "var(--text-primary)" }}>
