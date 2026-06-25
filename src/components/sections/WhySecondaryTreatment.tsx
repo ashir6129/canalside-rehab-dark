@@ -9,28 +9,24 @@ const reasons = [
     desc: "Against relapse, providing the strength and tools to overcome challenges in everyday sober life.",
     icon: ShieldCheck,
     accent: "var(--gold)",
-    accentHex: "#C9A84C",
   },
   {
     title: "Strengthen Life Skills",
     desc: "For daily living, including practical management of finances, relationships, and a fulfilling sober lifestyle.",
     icon: Sparkles,
-    accent: "var(--teal)",
-    accentHex: "#4A9B8E",
+    accent: "var(--gold)",
   },
   {
     title: "Deepen Self-Awareness",
     desc: "Through therapy and group work, understanding individual triggers and building lasting emotional intelligence.",
     icon: Brain,
     accent: "var(--gold)",
-    accentHex: "#C9A84C",
   },
   {
     title: "Reconnect with Purpose",
     desc: "Set healthy goals, rebuild identity, and rediscover meaning and direction beyond addiction.",
     icon: Target,
-    accent: "var(--teal)",
-    accentHex: "#4A9B8E",
+    accent: "var(--gold)",
   },
 ];
 
@@ -102,7 +98,7 @@ const WhySecondaryTreatment = () => {
                   key={reason.title}
                   className="relative p-6 rounded-2xl transition-all duration-300 hover:-translate-y-1"
                   style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border)" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.borderColor = reason.accentHex)}
+                  onMouseEnter={(e) => (e.currentTarget.style.borderColor = "var(--gold)")}
                   onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
                 >
                   {/* Number badge */}
@@ -115,9 +111,9 @@ const WhySecondaryTreatment = () => {
                   {/* Icon */}
                   <div
                     className="mb-4 w-10 h-10 rounded-lg flex items-center justify-center"
-                    style={{ backgroundColor: reason.accentHex + "22" }}
+                    style={{ backgroundColor: "var(--gold)" }}
                   >
-                    <Icon size={20} style={{ color: reason.accent }} />
+                    <Icon size={20} style={{ color: "var(--text-on-accent)" }} />
                   </div>
                   <h3
                     className="text-base font-bold mb-2"

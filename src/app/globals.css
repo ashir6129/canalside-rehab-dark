@@ -12,9 +12,9 @@
   --bg-deep:    #0D0D0D;
   --border:     #2C2C2C;
 
-  /* Accent colours */
+  /* Accent colours — DARK: gold/yellow is the ONLY accent, no green */
   --gold:       #C9A84C;
-  --teal:       #4A9B8E;
+  --teal:       #C9A84C;  /* teal → gold in dark so all accents are yellow */
 
   /* Text */
   --text-primary: #F0F0F0;
@@ -50,8 +50,8 @@
   --bg-deep:    #E5E7EB;
   --border:     #E5E7EB;
 
-  /* Accent colours (brighter and more modern) */
-  --gold:       #F5A623;
+  /* Accent colours — LIGHT: teal green is the ONLY accent, no yellow */
+  --gold:       #00A389;  /* gold → teal in light so all accents are teal */
   --teal:       #00A389;
 
   /* Text */
@@ -75,6 +75,13 @@
   /* Selection */
   --selection-bg:   #00A38933;
   --selection-text: #00A389;
+}
+
+/* ── Light-theme button hover → transparent outline ── */
+[data-theme="light"] .btn-accent:hover {
+  background-color: transparent !important;
+  color: var(--teal) !important;
+  border: 2px solid var(--teal) !important;
 }
 
 /* ── Base ──────────────────────────────────── */

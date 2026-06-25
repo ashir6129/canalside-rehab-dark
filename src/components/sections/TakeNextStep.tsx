@@ -12,7 +12,6 @@ const steps = [
     cta: "Contact Us Now",
     href: "/contact",
     accent: "var(--gold)",
-    accentHex: "#C9A84C",
     image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=600&q=80",
   },
   {
@@ -21,8 +20,7 @@ const steps = [
     description: "Schedule a visit or explore our programme and therapeutic community to see if Canalside House is the right fit for you or your loved one.",
     cta: "Explore Our Programme",
     href: "/programme",
-    accent: "var(--teal)",
-    accentHex: "#4A9B8E",
+    accent: "var(--gold)",
     image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=600&q=80",
   },
 ];
@@ -73,7 +71,7 @@ const TakeNextStep = () => {
                 key={step.title}
                 className="rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1"
                 style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border)" }}
-                onMouseEnter={(e) => (e.currentTarget.style.borderColor = step.accentHex)}
+                onMouseEnter={(e) => (e.currentTarget.style.borderColor = "var(--gold)")}
                 onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
               >
                 {/* Card image */}

@@ -9,15 +9,13 @@ const offers = [
     desc: "Live in a sober, structured environment with peers who truly understand your journey.",
     icon: Home,
     accent: "var(--gold)",
-    accentHex: "#C9A84C",
     image: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=600&q=80",
   },
   {
     title: "Individual Sessions",
     desc: "Continue therapy with experienced addiction specialists tailored to your individual needs.",
     icon: MessageSquare,
-    accent: "var(--teal)",
-    accentHex: "#4A9B8E",
+    accent: "var(--gold)",
     image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80",
   },
   {
@@ -25,15 +23,13 @@ const offers = [
     desc: "Learn budgeting, job readiness, emotional regulation, and practical independence tools.",
     icon: GraduationCap,
     accent: "var(--gold)",
-    accentHex: "#C9A84C",
     image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80",
   },
   {
     title: "Relapse Prevention",
     desc: "Build a personalised strategy to stay on track and identify early warning signs before they escalate.",
     icon: ShieldAlert,
-    accent: "var(--teal)",
-    accentHex: "#4A9B8E",
+    accent: "var(--gold)",
     image: "https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&w=600&q=80",
   },
   {
@@ -41,15 +37,13 @@ const offers = [
     desc: "Create meaningful connections through shared experiences and mutual accountability.",
     icon: Users,
     accent: "var(--gold)",
-    accentHex: "#C9A84C",
     image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80",
   },
   {
     title: "Family Involvement",
     desc: "Rebuild trust through structured family sessions and open, guided communication.",
     icon: HeartHandshake,
-    accent: "var(--teal)",
-    accentHex: "#4A9B8E",
+    accent: "var(--gold)",
     image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80",
   },
 ];
@@ -99,7 +93,7 @@ const SpecialistCare = () => {
                 key={offer.title}
                 className="rounded-2xl overflow-hidden group transition-all duration-300 hover:-translate-y-1"
                 style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border)" }}
-                onMouseEnter={(e) => (e.currentTarget.style.borderColor = offer.accentHex)}
+                onMouseEnter={(e) => (e.currentTarget.style.borderColor = "var(--gold)")}
                 onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
               >
                 {/* Card image */}
@@ -115,7 +109,7 @@ const SpecialistCare = () => {
                   {/* Icon badge */}
                   <div
                     className="absolute bottom-3 left-4 w-9 h-9 rounded-lg flex items-center justify-center"
-                    style={{ backgroundColor: offer.accent }}
+                    style={{ backgroundColor: "var(--gold)" }}
                   >
                     <Icon size={16} style={{ color: "var(--text-on-accent)" }} />
                   </div>
