@@ -133,7 +133,7 @@ const TakeNextStep = () => {
             <div className="absolute inset-0" style={{ backgroundColor: "var(--bg-deep)", opacity: 0.8 }} />
           </div>
           <div className="relative z-10 py-14 px-8 text-center">
-            <p className="text-lg mb-6 max-w-lg mx-auto" style={{ color: "#E0E0E0" }}>
+            <p className="text-lg mb-6 max-w-lg mx-auto" style={{ color: "var(--text-primary)" }}>
               Ready to start? Our team responds within 24 hours — confidentially and compassionately.
             </p>
             <Link

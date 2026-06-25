@@ -121,3 +121,14 @@ body {
 
 /* ── Selection ─────────────────────────────── */
 ::selection { background: var(--selection-bg); color: var(--selection-text); }
+
+/* ── Button hover helpers ───────────────────── */
+/* Solid accent buttons: darken on hover */
+[data-theme="dark"] a:hover[style*="var(--gold)"],
+[data-theme="dark"] button:hover[style*="var(--gold)"] {
+  filter: brightness(1.15);
+}
+[data-theme="light"] a:hover[style*="var(--gold)"],
+[data-theme="light"] button:hover[style*="var(--gold)"] {
+  filter: brightness(0.9);
+}
