@@ -1,5 +1,6 @@
 import Hero from "@/components/sections/Hero";
 import InteractiveImageSection from "@/components/sections/InteractiveImageSection";
+import FacilityGallery from "@/components/sections/FacilityGallery";
 import ValuePillars from "@/components/sections/ValuePillars";
 import LatestResources from "@/components/sections/LatestResources";
 import SpecialistCare from "@/components/sections/SpecialistCare";
@@ -14,6 +15,7 @@ export default function Home() {
     <main>
       <Hero />
       <InteractiveImageSection />
+      <FacilityGallery />
       <ValuePillars />
       <WhySecondaryTreatment />
       <SpecialistCare />

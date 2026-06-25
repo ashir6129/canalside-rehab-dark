@@ -104,34 +104,52 @@ const ContactPage = () => {
                   ))}
                 </div>
 
-                <form className="space-y-5" onSubmit={e => { e.preventDefault(); setSubmitted(true); }}>
+                <form className="space-y-5" onSubmit={e => { 
+                  e.preventDefault(); 
+                  const formData = new FormData(e.currentTarget);
+                  const name = formData.get("name");
+                  const email = formData.get("email");
+                  const phone = formData.get("phone") || "N/A";
+                  const message = formData.get("message");
+                  const org = formData.get("org") || "N/A";
+                  
+                  let text = `*New Enquiry*\n\n*Name*: ${name}\n*Email*: ${email}\n*Phone*: ${phone}\n`;
+                  if (formType === "referral") {
+                    text += `*Organisation*: ${org}\n`;
+                  }
+                  text += `\n*Message*: ${message}`;
+                  
+                  const url = `https://wa.me/447405608617?text=${encodeURIComponent(text)}`;
+                  window.open(url, '_blank');
+                  setSubmitted(true); 
+                }}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
                       <label style={labelStyle}>Full Name</label>
-                      <input type="text" placeholder="John Doe" required style={inputStyle}
+                      <input type="text" name="name" placeholder="John Doe" required style={inputStyle}
                         onFocus={e => (e.target.style.borderColor = "var(--gold)")} onBlur={e => (e.target.style.borderColor = "var(--border)")} />
                     </div>
                     <div>
                       <label style={labelStyle}>Email Address</label>
-                      <input type="email" placeholder="john@example.com" required style={inputStyle}
+                      <input type="email" name="email" placeholder="john@example.com" required style={inputStyle}
                         onFocus={e => (e.target.style.borderColor = "var(--gold)")} onBlur={e => (e.target.style.borderColor = "var(--border)")} />
                     </div>
                   </div>
                   <div>
                     <label style={labelStyle}>Phone Number</label>
-                    <input type="tel" placeholder="+44 7000 000000" style={inputStyle}
+                    <input type="tel" name="phone" placeholder="+44 7000 000000" style={inputStyle}
                       onFocus={e => (e.target.style.borderColor = "var(--teal)")} onBlur={e => (e.target.style.borderColor = "var(--border)")} />
                   </div>
                   {formType === "referral" && (
                     <div>
                       <label style={labelStyle}>Organisation / Profession</label>
-                      <input type="text" placeholder="e.g. Recovery Hub / GP / NHS Trust" style={inputStyle}
+                      <input type="text" name="org" placeholder="e.g. Recovery Hub / GP / NHS Trust" style={inputStyle}
                         onFocus={e => (e.target.style.borderColor = "var(--teal)")} onBlur={e => (e.target.style.borderColor = "var(--border)")} />
                     </div>
                   )}
                   <div>
                     <label style={labelStyle}>Your Message</label>
-                    <textarea rows={5} placeholder="How can we help you?" required style={{ ...inputStyle, resize: "none" }}
+                    <textarea name="message" rows={5} placeholder="How can we help you?" required style={{ ...inputStyle, resize: "none" }}
                       onFocus={e => (e.target.style.borderColor = "var(--gold)")} onBlur={e => (e.target.style.borderColor = "var(--border)")} />
                   </div>
                   <p className="text-xs" style={{ color: "var(--text-dim)" }}>By submitting you consent to Canalside House processing your data in accordance with GDPR.</p>
