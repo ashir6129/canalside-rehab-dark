@@ -42,7 +42,7 @@ const Hero = () => {
           style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border)", color: "var(--gold)" }}
         >
           <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ backgroundColor: "var(--teal)" }} />
-          ETL Care — Secondary Recovery
+          A project of Rehbr UK limited and ETL
         </div>
 
         <h1
@@ -66,8 +66,6 @@ const Hero = () => {
         {/* Stats strip */}
         <div className="flex justify-center gap-8 mb-10">
           {[
-            { val: "12+", label: "Years Experience" },
-            { val: "95%", label: "Success Rate" },
             { val: "24/7", label: "Support Available" },
           ].map((s) => (
             <div key={s.label} className="text-center">

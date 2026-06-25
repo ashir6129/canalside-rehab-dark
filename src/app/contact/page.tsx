@@ -61,9 +61,9 @@ const ContactPage = () => {
             <div className="lg:col-span-1 space-y-5">
               <h2 className="text-2xl font-bold mb-6" style={{ fontFamily: "var(--font-playfair), serif", color: "var(--text-primary)" }}>Get In Touch</h2>
               {[
-                { icon: Phone, label: "Call Us", value: "+44 123 456 7890", accentVar: "var(--gold)" },
+                { icon: Phone, label: "Call Us", value: "+44 7405 608617", accentVar: "var(--gold)" },
                 { icon: Mail, label: "Email Us", value: "info@canalside-recovery.co.uk", accentVar: "var(--teal)" },
-                { icon: MapPin, label: "Visit Us", value: "Canalside Recovery Center, London, UK", accentVar: "var(--gold)" },
+                { icon: MapPin, label: "Visit Us", value: "464 Oldham Road, M35 0FH, UK", accentVar: "var(--gold)" },
               ].map(({ icon: Icon, label, value, accentVar }, i) => (
                 <div key={i} className="flex gap-4 p-5 rounded-xl" style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border)" }}>
                   <div className="w-11 h-11 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: accentVar }}>
@@ -82,7 +82,7 @@ const ContactPage = () => {
                   <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: "var(--gold)" }}>
                     <MapPin size={18} style={{ color: "var(--text-on-accent)" }} />
                   </div>
-                  <p className="text-xs font-bold" style={{ color: "var(--text-primary)" }}>London, United Kingdom</p>
+                  <p className="text-xs font-bold" style={{ color: "var(--text-primary)" }}>M35 0FH, United Kingdom</p>
                 </div>
               </div>
             </div>

@@ -13,7 +13,7 @@ const offers = [
     image: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=600&q=80",
   },
   {
-    title: "Individual Counselling",
+    title: "Individual Sessions",
     desc: "Continue therapy with experienced addiction specialists tailored to your individual needs.",
     icon: MessageSquare,
     accent: "var(--teal)",

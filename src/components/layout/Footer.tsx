@@ -24,7 +24,7 @@ const Footer = () => {
             </span>
           </div>
           <p className="text-sm leading-relaxed mb-6" style={{ color: "var(--text-muted)" }}>
-            A service by ETL Care — providing a safe, structured, and therapeutic environment where individuals in early recovery build foundations for sustainable sobriety.
+            A project of Rehbr UK limited and ETL Care — providing a safe, structured, and therapeutic environment where individuals in early recovery build foundations for sustainable sobriety.
           </p>
           <div className="flex gap-4">
             {[Instagram, Facebook, Linkedin].map((Icon, i) => (
@@ -84,12 +84,12 @@ const Footer = () => {
             <li className="flex items-start gap-3">
               <MapPin size={15} className="mt-0.5 shrink-0" style={{ color: "var(--gold)" }} />
               <span className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-                Canalside Recovery Center,<br />London, United Kingdom
+                464 Oldham Road,<br />M35 0FH, United Kingdom
               </span>
             </li>
             <li className="flex items-center gap-3">
               <Phone size={15} className="shrink-0" style={{ color: "var(--gold)" }} />
-              <span className="text-sm" style={{ color: "var(--text-muted)" }}>+44 123 456 7890</span>
+              <Link href="https://wa.me/447405608617" target="_blank" rel="noopener noreferrer" className="text-sm hover:underline" style={{ color: "var(--text-muted)" }}>+44 7405 608617</Link>
             </li>
             <li className="flex items-center gap-3">
               <Mail size={15} className="shrink-0" style={{ color: "var(--gold)" }} />
@@ -113,7 +113,7 @@ const Footer = () => {
       {/* Bottom bar */}
       <div className="max-w-7xl mx-auto px-6 mt-14 pt-6" style={{ borderTop: "1px solid var(--border)" }}>
         <p className="text-center text-xs" style={{ color: "var(--text-dim)" }}>
-          © {new Date().getFullYear()} ETL Care — Canalside House. All rights reserved. Registered in England & Wales.
+          © {new Date().getFullYear()} A project of Rehbr UK limited and ETL Care — Canalside House. All rights reserved. Registered in England & Wales.
         </p>
       </div>
     </footer>

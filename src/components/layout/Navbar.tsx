@@ -93,7 +93,9 @@ const Navbar = () => {
 
           {/* Contact CTA */}
           <Link
-            href="/contact"
+            href="https://wa.me/447405608617"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-2 font-semibold px-5 py-2 rounded-md text-sm transition-all duration-300"
             style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}
             onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "var(--teal)")}
@@ -145,7 +147,9 @@ const Navbar = () => {
             );
           })}
           <Link
-            href="/contact"
+            href="https://wa.me/447405608617"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setIsOpen(false)}
             className="mt-2 flex items-center justify-center gap-2 font-semibold px-5 py-2.5 rounded-md text-sm transition-all duration-300"
             style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}
