@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { Mail, Phone, MapPin, Instagram, Facebook, Linkedin } from "lucide-react";
 
 const Footer = () => {
@@ -13,11 +14,14 @@ const Footer = () => {
         {/* Brand */}
         <div>
           <div className="flex items-center gap-3 mb-5">
-            <div
-              className="w-9 h-9 rounded-md flex items-center justify-center shrink-0"
-              style={{ border: "1px solid var(--gold)", backgroundColor: "var(--bg-card)" }}
-            >
-              <span className="text-[10px] font-bold" style={{ color: "var(--gold)" }}>ETL</span>
+            <div className="relative w-10 h-10 flex items-center justify-center shrink-0">
+              <Image
+                src="/images/logo-transparent.png"
+                alt="ETL Logo"
+                fill
+                className="object-contain"
+                sizes="40px"
+              />
             </div>
             <span className="font-semibold text-lg" style={{ color: "var(--text-primary)" }}>
               <span style={{ color: "var(--gold)" }}>Canalside</span> House

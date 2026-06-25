@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, X, Phone, Sun, Moon } from "lucide-react";
@@ -32,11 +33,14 @@ const Navbar = () => {
 
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 shrink-0">
-          <div
-            className="w-9 h-9 rounded-md flex items-center justify-center"
-            style={{ border: "1px solid var(--gold)", backgroundColor: "var(--bg-card)" }}
-          >
-            <span className="text-[10px] font-bold" style={{ color: "var(--gold)" }}>ETL</span>
+          <div className="relative w-10 h-10 flex items-center justify-center">
+            <Image
+              src="/images/logo-transparent.png"
+              alt="ETL Logo"
+              fill
+              className="object-contain"
+              sizes="40px"
+            />
           </div>
           <span className="font-semibold text-base tracking-wide" style={{ color: "var(--text-primary)" }}>
             <span style={{ color: "var(--gold)" }}>Canalside</span> House
