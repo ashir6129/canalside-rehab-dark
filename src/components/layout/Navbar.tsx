@@ -38,7 +38,7 @@ const Navbar = () => {
               src="/images/logo-transparent.png"
               alt="ETL Logo"
               fill
-              className="object-contain scale-[2.5]"
+              className="object-contain scale-[1.5]"
               sizes="(max-width: 768px) 64px, 80px"
             />
           </div>
