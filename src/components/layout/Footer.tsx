@@ -14,13 +14,13 @@ const Footer = () => {
         {/* Brand */}
         <div>
           <div className="flex items-center gap-3 mb-5">
-            <div className="relative w-20 h-20 flex items-center justify-center shrink-0">
+            <div className="relative w-32 h-32 flex items-center justify-center shrink-0 -ml-2">
               <Image
                 src="/images/logo-transparent.png"
                 alt="ETL Logo"
                 fill
                 className="object-contain"
-                sizes="80px"
+                sizes="128px"
               />
             </div>
             <span className="font-semibold text-lg" style={{ color: "var(--text-primary)" }}>
