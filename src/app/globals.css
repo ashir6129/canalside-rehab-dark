@@ -122,13 +122,24 @@ body {
 /* ── Selection ─────────────────────────────── */
 ::selection { background: var(--selection-bg); color: var(--selection-text); }
 
-/* ── Button hover helpers ───────────────────── */
-/* Solid accent buttons: darken on hover */
-[data-theme="dark"] a:hover[style*="var(--gold)"],
-[data-theme="dark"] button:hover[style*="var(--gold)"] {
-  filter: brightness(1.15);
+/* ── Primary button hover ───────────────────── */
+.btn-primary {
+  transition: filter 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease !important;
 }
-[data-theme="light"] a:hover[style*="var(--gold)"],
-[data-theme="light"] button:hover[style*="var(--gold)"] {
-  filter: brightness(0.9);
+.btn-primary:hover {
+  filter: brightness(0.88) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25) !important;
+}
+[data-theme="dark"] .btn-primary:hover {
+  filter: brightness(1.18) !important;
+}
+
+/* ── Outline button hover ───────────────────── */
+.btn-outline {
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease !important;
+}
+.btn-outline:hover {
+  border-color: var(--gold) !important;
+  color: var(--gold) !important;
 }

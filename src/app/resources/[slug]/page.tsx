@@ -37,7 +37,7 @@ const ArticlePage = async ({ params }: { params: Promise<{ slug: string }> }) =>
         {/* Category badge */}
         <div className="absolute bottom-6 left-6 md:left-16">
           <span
-            className="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider"
+            className="btn-primary px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider"
             style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}
           >
             {article.category}
@@ -152,7 +152,7 @@ const ArticlePage = async ({ params }: { params: Promise<{ slug: string }> }) =>
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 font-bold px-8 py-3.5 rounded-md text-sm transition-all duration-300 hover:opacity-80"
+            className="btn-primary inline-flex items-center gap-2 font-bold px-8 py-3.5 rounded-md text-sm transition-all duration-300 hover:opacity-80"
             style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}
           >
             Contact Admissions Team <ArrowRight size={16} />
@@ -191,7 +191,7 @@ const ArticlePage = async ({ params }: { params: Promise<{ slug: string }> }) =>
                     />
                     <div className="absolute inset-0" style={{ backgroundColor: "var(--bg-main)", opacity: 0.3 }} />
                     <span
-                      className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-xs font-bold"
+                      className="btn-primary absolute top-3 left-3 px-2.5 py-1 rounded-full text-xs font-bold"
                       style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}
                     >
                       {rel.category}

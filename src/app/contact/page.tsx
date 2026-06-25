@@ -29,8 +29,8 @@ const ContactPage = () => {
             <CheckCircle2 size={36} style={{ color: "var(--text-on-accent)" }} />
           </div>
           <h2 className="text-3xl font-bold mb-4" style={{ fontFamily: "var(--font-playfair), serif", color: "var(--text-primary)" }}>Message Sent!</h2>
-          <p className="text-sm mb-8" style={{ color: "var(--text-muted)" }}>Thank you for reaching out. Our team will get back to you within 24 hours.</p>
-          <button onClick={() => setSubmitted(false)} className="inline-flex items-center gap-2 font-bold px-8 py-3.5 rounded-md text-sm transition-opacity hover:opacity-85" style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}>
+          <p className="btn-primary text-sm mb-8" style={{ color: "var(--text-muted)" }}>Thank you for reaching out. Our team will get back to you within 24 hours.</p>
+          <button onClick={() => setSubmitted(false)} className="btn-primary inline-flex items-center gap-2 font-bold px-8 py-3.5 rounded-md text-sm transition-opacity hover:opacity-85" style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}>
             Send Another Message
           </button>
         </div>
@@ -152,8 +152,8 @@ const ContactPage = () => {
                     <textarea name="message" rows={5} placeholder="How can we help you?" required style={{ ...inputStyle, resize: "none" }}
                       onFocus={e => (e.target.style.borderColor = "var(--gold)")} onBlur={e => (e.target.style.borderColor = "var(--border)")} />
                   </div>
-                  <p className="text-xs" style={{ color: "var(--text-dim)" }}>By submitting you consent to Canalside House processing your data in accordance with GDPR.</p>
-                  <button type="submit" className="w-full flex items-center justify-center gap-3 font-bold py-4 rounded-xl text-sm hover:opacity-90 transition-opacity" style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}>
+                  <p className="btn-primary text-xs" style={{ color: "var(--text-dim)" }}>By submitting you consent to Canalside House processing your data in accordance with GDPR.</p>
+                  <button type="submit" className="btn-primary w-full flex items-center justify-center gap-3 font-bold py-4 rounded-xl text-sm hover:opacity-90 transition-opacity" style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}>
                     Send Message <Send size={16} />
                   </button>
                 </form>

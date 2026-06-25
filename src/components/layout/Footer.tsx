@@ -104,7 +104,7 @@ const Footer = () => {
           {/* Mini CTA */}
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 mt-8 px-5 py-2.5 rounded-md text-sm font-semibold transition-all duration-300"
+            className="btn-primary inline-flex items-center gap-2 mt-8 px-5 py-2.5 rounded-md text-sm font-semibold transition-all duration-300"
             style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}
             onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "var(--teal)")}
             onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "var(--gold)")}

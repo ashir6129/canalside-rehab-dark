@@ -45,9 +45,9 @@ const ProgrammePage = () => {
           <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--teal)" }}>Secondary Care</p>
           <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight" style={{ fontFamily: "var(--font-playfair), serif", color: "var(--text-primary)" }}>Our Programme</h1>
           <p className="text-lg max-w-2xl mx-auto mb-10" style={{ color: "var(--text-muted)" }}>Bridging the gap between initial rehabilitation and a full, independent life — with structure, community, and expert clinical care.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/referral/apply" className="inline-flex items-center gap-2 font-bold px-8 py-3.5 rounded-md text-sm transition-opacity hover:opacity-85" style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}>Apply Now <ArrowRight size={16} /></Link>
-            <Link href="/referral" className="inline-flex items-center gap-2 font-medium px-8 py-3.5 rounded-md text-sm transition-colors" style={{ border: "1px solid var(--border)", color: "var(--text-muted)" }}>For Professionals <ArrowRight size={16} /></Link>
+          <div className="btn-primary flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/referral/apply" className="btn-outline btn-primary inline-flex items-center gap-2 font-bold px-8 py-3.5 rounded-md text-sm transition-opacity hover:opacity-85" style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}>Apply Now <ArrowRight size={16} /></Link>
+            <Link href="/referral" className="btn-outline inline-flex items-center gap-2 font-medium px-8 py-3.5 rounded-md text-sm transition-colors" style={{ border: "1px solid var(--border)", color: "var(--text-muted)" }}>For Professionals <ArrowRight size={16} /></Link>
           </div>
         </div>
       </section>
@@ -72,8 +72,8 @@ const ProgrammePage = () => {
                 ))}
               </ul>
             </div>
-            <div className="p-8 rounded-2xl relative overflow-hidden" style={{ backgroundColor: "var(--bg-card)", border: "2px solid var(--gold)" }}>
-              <div className="absolute top-0 right-0 text-xs font-bold uppercase px-4 py-1.5" style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}>Canalside Recovery</div>
+            <div className="btn-primary p-8 rounded-2xl relative overflow-hidden" style={{ backgroundColor: "var(--bg-card)", border: "2px solid var(--gold)" }}>
+              <div className="btn-primary absolute top-0 right-0 text-xs font-bold uppercase px-4 py-1.5" style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}>Canalside Recovery</div>
               <h3 className="text-xl font-bold mb-2 mt-4" style={{ color: "var(--text-primary)", fontFamily: "var(--font-playfair), serif" }}>Secondary Care</h3>
               <p className="text-xs uppercase tracking-widest mb-6" style={{ color: "var(--gold)" }}>Sustainable Living</p>
               <ul className="space-y-4">
@@ -195,9 +195,9 @@ const ProgrammePage = () => {
         <div className="relative max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-4xl font-bold mb-6" style={{ fontFamily: "var(--font-playfair), serif", color: "var(--text-primary)" }}>Take the Next Step</h2>
           <p className="text-sm mb-10" style={{ color: "var(--text-muted)" }}>If you or a loved one are ready to bridge the gap to a permanent, sober lifestyle, we are here to help.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/referral/apply" className="inline-flex items-center gap-2 font-bold px-10 py-4 rounded-md text-sm transition-opacity hover:opacity-85" style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}>Apply Now <ArrowRight size={16} /></Link>
-            <Link href="/eligibility" className="inline-flex items-center gap-2 font-medium px-10 py-4 rounded-md text-sm transition-colors" style={{ border: "1px solid var(--border)", color: "var(--text-muted)" }}>View Eligibility <ArrowRight size={16} /></Link>
+          <div className="btn-primary flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/referral/apply" className="btn-outline btn-primary inline-flex items-center gap-2 font-bold px-10 py-4 rounded-md text-sm transition-opacity hover:opacity-85" style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}>Apply Now <ArrowRight size={16} /></Link>
+            <Link href="/eligibility" className="btn-outline inline-flex items-center gap-2 font-medium px-10 py-4 rounded-md text-sm transition-colors" style={{ border: "1px solid var(--border)", color: "var(--text-muted)" }}>View Eligibility <ArrowRight size={16} /></Link>
           </div>
         </div>
       </section>

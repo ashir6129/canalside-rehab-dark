@@ -119,7 +119,7 @@ const LatestResources = () => {
         <div className="mt-10 md:hidden">
           <Link
             href="/resources"
-            className="flex items-center justify-center gap-2 font-bold px-7 py-3 rounded-md text-sm w-full transition-all duration-300"
+            className="btn-primary flex items-center justify-center gap-2 font-bold px-7 py-3 rounded-md text-sm w-full transition-all duration-300"
             style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}
           >
             View All Resources <ArrowRight size={15} />

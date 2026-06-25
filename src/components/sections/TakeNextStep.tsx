@@ -138,7 +138,7 @@ const TakeNextStep = () => {
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 font-bold px-10 py-4 rounded-md text-base transition-all duration-300"
+              className="btn-primary inline-flex items-center gap-2 font-bold px-10 py-4 rounded-md text-base transition-all duration-300"
               style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}
               onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "var(--teal)")}
               onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "var(--gold)")}

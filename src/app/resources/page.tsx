@@ -99,8 +99,8 @@ const ResourcesPage = () => {
               </div>
               <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--gold)" }}>We&apos;re Here to Help</p>
               <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ fontFamily: "var(--font-playfair), serif", color: "var(--text-primary)" }}>Need Immediate Support?</h2>
-              <p className="text-sm mb-8 leading-relaxed" style={{ color: "var(--text-muted)" }}>Our clinical team at Canalside House is ready to help you or your loved one start their secondary recovery journey today.</p>
-              <Link href="/contact" className="inline-flex items-center gap-2 font-bold px-10 py-4 rounded-md text-sm transition-opacity hover:opacity-85" style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}>
+              <p className="btn-primary text-sm mb-8 leading-relaxed" style={{ color: "var(--text-muted)" }}>Our clinical team at Canalside House is ready to help you or your loved one start their secondary recovery journey today.</p>
+              <Link href="/contact" className="btn-primary inline-flex items-center gap-2 font-bold px-10 py-4 rounded-md text-sm transition-opacity hover:opacity-85" style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}>
                 Contact Our Admissions Team <ArrowRight size={16} />
               </Link>
             </div>

@@ -69,7 +69,7 @@ const ReferralPartners = () => {
           </div>
           <Link
             href="/referral"
-            className="inline-flex items-center gap-2 font-bold px-8 py-3.5 rounded-md text-sm whitespace-nowrap transition-all duration-300 shrink-0"
+            className="btn-primary inline-flex items-center gap-2 font-bold px-8 py-3.5 rounded-md text-sm whitespace-nowrap transition-all duration-300 shrink-0"
             style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}
             onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "var(--teal)")}
             onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "var(--gold)")}

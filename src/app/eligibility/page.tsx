@@ -103,11 +103,11 @@ const EligibilityPage = () => {
         <div className="max-w-7xl mx-auto px-6 text-center">
           <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--teal)" }}>Next Steps</p>
           <h2 className="text-3xl font-bold mb-10" style={{ fontFamily: "var(--font-playfair), serif", color: "var(--text-primary)" }}>Not Sure If You Qualify?</h2>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="inline-flex items-center gap-2 font-bold px-10 py-4 rounded-md text-sm transition-opacity hover:opacity-85" style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}>
+          <div className="btn-primary flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/contact" className="btn-primary inline-flex items-center gap-2 font-bold px-10 py-4 rounded-md text-sm transition-opacity hover:opacity-85" style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}>
               Speak to Our Admissions Team <ArrowRight size={16} />
             </Link>
-            <Link href="/referral" className="inline-flex items-center gap-2 font-medium px-10 py-4 rounded-md text-sm transition-colors" style={{ border: "1px solid var(--border)", color: "var(--text-muted)" }}>
+            <Link href="/referral" className="btn-outline inline-flex items-center gap-2 font-medium px-10 py-4 rounded-md text-sm transition-colors" style={{ border: "1px solid var(--border)", color: "var(--text-muted)" }}>
               Professional Referral Info <ArrowRight size={16} />
             </Link>
           </div>

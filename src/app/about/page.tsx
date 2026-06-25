@@ -121,7 +121,7 @@ const AboutPage = () => {
                   <Image src={member.image} alt={member.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="50vw" />
                   <div className="absolute inset-0" style={{ backgroundColor: "var(--bg-deep)", opacity: 0.3 }} />
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="font-bold px-5 py-2.5 rounded-md text-sm" style={{ backgroundColor: member.accentVar, color: "var(--text-on-accent)" }}>View Full Profile</span>
+                    <span className="btn-primary font-bold px-5 py-2.5 rounded-md text-sm" style={{ backgroundColor: member.accentVar, color: "var(--text-on-accent)" }}>View Full Profile</span>
                   </div>
                 </div>
                 <div className="p-7">

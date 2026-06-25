@@ -98,7 +98,7 @@ const Navbar = () => {
           {/* Contact CTA */}
           <Link
             href="/contact"
-            className="flex items-center gap-2 font-semibold px-5 py-2 rounded-md text-sm transition-all duration-300"
+            className="btn-primary flex items-center gap-2 font-semibold px-5 py-2 rounded-md text-sm transition-all duration-300"
             style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}
             onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "var(--teal)")}
             onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "var(--gold)")}
@@ -151,7 +151,7 @@ const Navbar = () => {
           <Link
             href="/contact"
             onClick={() => setIsOpen(false)}
-            className="mt-2 flex items-center justify-center gap-2 font-semibold px-5 py-2.5 rounded-md text-sm transition-all duration-300"
+            className="btn-primary mt-2 flex items-center justify-center gap-2 font-semibold px-5 py-2.5 rounded-md text-sm transition-all duration-300"
             style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}
           >
             <Phone size={14} />

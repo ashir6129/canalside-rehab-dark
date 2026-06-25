@@ -50,7 +50,7 @@ const ReferralForm = () => {
             Thank you. Our admissions team will review the information and contact you within 24 hours to discuss the next steps.
           </p>
           <Link href="/referral"
-            className="inline-flex items-center gap-2 font-bold px-10 py-4 rounded-md text-sm transition-opacity hover:opacity-85"
+            className="btn-primary inline-flex items-center gap-2 font-bold px-10 py-4 rounded-md text-sm transition-opacity hover:opacity-85"
             style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}>
             Return to Referrals
           </Link>
@@ -292,13 +292,13 @@ const ReferralForm = () => {
 
               {step === 4 ? (
                 <button type="submit"
-                  className="flex items-center gap-2 font-bold px-10 py-4 rounded-md text-sm transition-opacity hover:opacity-85"
+                  className="btn-primary flex items-center gap-2 font-bold px-10 py-4 rounded-md text-sm transition-opacity hover:opacity-85"
                   style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}>
                   Submit Referral <Send size={16} />
                 </button>
               ) : (
                 <button type="submit"
-                  className="flex items-center gap-2 font-bold px-10 py-4 rounded-md text-sm transition-opacity hover:opacity-85"
+                  className="btn-primary flex items-center gap-2 font-bold px-10 py-4 rounded-md text-sm transition-opacity hover:opacity-85"
                   style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}>
                   Next Step <ChevronRight size={16} />
                 </button>

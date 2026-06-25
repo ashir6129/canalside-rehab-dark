@@ -68,7 +68,7 @@ const EligibilitySection = () => {
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 font-bold px-7 py-3 rounded-md text-sm transition-all duration-300"
+                className="btn-primary inline-flex items-center justify-center gap-2 font-bold px-7 py-3 rounded-md text-sm transition-all duration-300"
                 style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}
                 onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "var(--teal)")}
                 onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "var(--gold)")}

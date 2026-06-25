@@ -32,8 +32,8 @@ const ReferralPage = () => {
         <div className="relative max-w-4xl mx-auto px-6 text-center">
           <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--teal)" }}>For Professionals</p>
           <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight" style={{ fontFamily: "var(--font-playfair), serif", color: "var(--text-primary)" }}>Professional Referrals</h1>
-          <p className="text-lg max-w-3xl mx-auto mb-10" style={{ color: "var(--text-muted)" }}>We work closely with referral agencies and professionals to ensure a seamless transition into secondary accommodation for individuals in recovery.</p>
-          <Link href="/referral/apply" className="inline-flex items-center gap-2 font-bold px-10 py-4 rounded-md text-sm transition-opacity hover:opacity-85" style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}>
+          <p className="btn-primary text-lg max-w-3xl mx-auto mb-10" style={{ color: "var(--text-muted)" }}>We work closely with referral agencies and professionals to ensure a seamless transition into secondary accommodation for individuals in recovery.</p>
+          <Link href="/referral/apply" className="btn-primary inline-flex items-center gap-2 font-bold px-10 py-4 rounded-md text-sm transition-opacity hover:opacity-85" style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}>
             Start Online Referral <ArrowRight size={16} />
           </Link>
         </div>
@@ -111,16 +111,16 @@ const ReferralPage = () => {
                 <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--gold)" }}>Resources</p>
                 <h2 className="text-2xl font-bold mb-4" style={{ fontFamily: "var(--font-playfair), serif", color: "var(--text-primary)" }}>Professional Resources</h2>
                 <p className="text-sm mb-8 leading-relaxed" style={{ color: "var(--text-muted)" }}>Access our essential documents, including the professional referral pack and our latest policies and procedures.</p>
-                <div className="space-y-3">
-                  <Link href="/referral/apply" className="flex items-center gap-4 font-bold p-4 rounded-xl w-full transition-opacity hover:opacity-85 text-sm justify-center" style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}>
+                <div className="btn-primary space-y-3">
+                  <Link href="/referral/apply" className="btn-primary flex items-center gap-4 font-bold p-4 rounded-xl w-full transition-opacity hover:opacity-85 text-sm justify-center" style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}>
                     <ClipboardCheck size={18} />Apply Online Now
                   </Link>
-                  <button className="flex items-center gap-4 p-4 rounded-xl w-full transition-colors duration-300 group" style={{ backgroundColor: "var(--bg-section)", border: "1px solid var(--border)" }}>
+                  <button className="btn-outline flex items-center gap-4 p-4 rounded-xl w-full transition-colors duration-300 group" style={{ backgroundColor: "var(--bg-section)", border: "1px solid var(--border)" }}>
                     <FileText size={18} style={{ color: "var(--gold)" }} />
                     <span className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>Referral Pack.pdf</span>
                     <Download size={15} className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: "var(--gold)" }} />
                   </button>
-                  <button className="flex items-center gap-4 p-4 rounded-xl w-full transition-colors duration-300 group" style={{ backgroundColor: "var(--bg-section)", border: "1px solid var(--border)" }}>
+                  <button className="btn-outline flex items-center gap-4 p-4 rounded-xl w-full transition-colors duration-300 group" style={{ backgroundColor: "var(--bg-section)", border: "1px solid var(--border)" }}>
                     <CheckCircle2 size={18} style={{ color: "var(--teal)" }} />
                     <span className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>Service Overview.pdf</span>
                     <Download size={15} className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: "var(--teal)" }} />

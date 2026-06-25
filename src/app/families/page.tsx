@@ -34,8 +34,8 @@ const FamiliesPage = () => {
         <div className="relative max-w-4xl mx-auto px-6 text-center">
           <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--teal)" }}>Family Support</p>
           <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight" style={{ fontFamily: "var(--font-playfair), serif", color: "var(--text-primary)" }}>Support for Families</h1>
-          <p className="text-lg max-w-2xl mx-auto mb-10" style={{ color: "var(--text-muted)" }}>Recovery is a journey for the whole family. We are here to support you every step of the way — with compassion, guidance, and expert care.</p>
-          <Link href="/contact" className="inline-flex items-center gap-2 font-bold px-8 py-3.5 rounded-md text-sm transition-opacity hover:opacity-85" style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}>
+          <p className="btn-primary text-lg max-w-2xl mx-auto mb-10" style={{ color: "var(--text-muted)" }}>Recovery is a journey for the whole family. We are here to support you every step of the way — with compassion, guidance, and expert care.</p>
+          <Link href="/contact" className="btn-primary inline-flex items-center gap-2 font-bold px-8 py-3.5 rounded-md text-sm transition-opacity hover:opacity-85" style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}>
             Book a Family Consultation <ArrowRight size={16} />
           </Link>
         </div>
@@ -135,8 +135,8 @@ const FamiliesPage = () => {
           <p className="text-sm mb-10 leading-relaxed" style={{ color: "var(--text-muted)" }}>Secondary treatment is more than just &ldquo;extra time&rdquo; in recovery — it&apos;s a chance to deepen healing, grow essential life skills, and create a solid path forward.</p>
           <div className="p-8 rounded-2xl mb-8" style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border)" }}>
             <h3 className="text-xl font-bold mb-3" style={{ fontFamily: "var(--font-playfair), serif", color: "var(--text-primary)" }}>Family Consultation</h3>
-            <p className="text-sm mb-6" style={{ color: "var(--text-muted)" }}>Speak confidentially with our clinical team about your loved one&apos;s care plan.</p>
-            <Link href="/contact" className="inline-flex items-center gap-2 font-bold px-10 py-4 rounded-md text-sm transition-opacity hover:opacity-85" style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}>
+            <p className="btn-primary text-sm mb-6" style={{ color: "var(--text-muted)" }}>Speak confidentially with our clinical team about your loved one&apos;s care plan.</p>
+            <Link href="/contact" className="btn-primary inline-flex items-center gap-2 font-bold px-10 py-4 rounded-md text-sm transition-opacity hover:opacity-85" style={{ backgroundColor: "var(--gold)", color: "var(--text-on-accent)" }}>
               Book a Consultation <ArrowRight size={16} />
             </Link>
           </div>
