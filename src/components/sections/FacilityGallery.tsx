@@ -102,9 +102,9 @@ const FacilityGallery = () => {
                 className="object-cover group-hover:scale-105 transition-transform duration-700" 
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
-              <div className="absolute inset-0 bg-black opacity-30 group-hover:opacity-40 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-black opacity-40 group-hover:opacity-60 transition-opacity duration-300" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <h3 className="text-white text-2xl font-bold tracking-wide drop-shadow-md">
+                <h3 className="text-white text-2xl font-bold tracking-wide drop-shadow-xl bg-black/40 px-6 py-2 rounded-lg backdrop-blur-sm">
                   {cat.title}
                 </h3>
               </div>
