@@ -29,17 +29,17 @@ const Navbar = () => {
         borderBottom: "1px solid var(--nav-border)",
       }}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-28">
 
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 shrink-0">
-          <div className="relative w-16 h-16 flex items-center justify-center">
+          <div className="relative w-28 h-28 flex items-center justify-center">
             <Image
               src="/images/logo-transparent.png"
               alt="ETL Logo"
               fill
               className="object-contain"
-              sizes="64px"
+              sizes="112px"
             />
           </div>
           <span className="font-semibold text-base tracking-wide" style={{ color: "var(--text-primary)" }}>

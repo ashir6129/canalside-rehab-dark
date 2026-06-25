@@ -69,7 +69,7 @@
   --nav-border: #E5E7EB;
 
   /* Hero overlay */
-  --hero-overlay-opacity: 0.25;
+  --hero-overlay-opacity: 0.85;
   --card-overlay-opacity: 0.15;
 
   /* Selection */
@@ -93,16 +93,18 @@ body {
 }
 
 /* ── Typography ────────────────────────────── */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-playfair), sans-serif;
-  font-weight: 600;
-  line-height: 1.2;
-  color: var(--text-primary);
-}
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-playfair), sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--text-primary);
+  }
 
-p, li, span {
-  line-height: 1.75;
-  font-size: 1.05rem;
+  p, li, span {
+    line-height: 1.75;
+    font-size: 1.05rem;
+  }
 }
 
 /* ── Scrollbar ─────────────────────────────── */
